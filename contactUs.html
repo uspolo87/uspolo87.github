@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>welcome Rinku Cable</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <!--  meta description here -->
+    <meta name="description" content="" />
+    <!--  meta theme-color -->
+    <meta name="theme-color" content="#00273b" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      #form-container {
+        padding-top: 10%;
+      }
+
+      .form-control {
+        border: none;
+        border-bottom: 2px solid lightgrey;
+        background-color: none;
+        outline: 0;
+        margin-top: 34px;
+        font-size: 18px;
+      }
+
+      .form-control:focus {
+        border: none;
+        background-color: none;
+        outline: none !important;
+      }
+
+      img {
+        width: 98%;
+        margin-top: 25px;
+      }
+
+      #cSubmit {
+        padding: 8px 30px;
+        border-radius: 45px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="d-flex flex-row justify-content-between p-3">
+        <div class="logo">
+          <h1 id="logo">Rinku Cable Tv</h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5" id="form-container">
+          <h1>Contact Us</h1>
+
+          <div class="form-group">
+            <textarea
+              name="complaints"
+              id="complaint"
+              cols="30"
+              rows="2"
+              class="form-control"
+              placeholder="Enter complaints here"
+            ></textarea>
+          </div>
+          <button class="btn btn-primary" id="cSubmit">submit</button>
+        </div>
+
+        <div class="col-md-7">
+          <img
+            src="images/new-conn.svg"
+            alt="new Connection"
+            class="img-responsive"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyDZlxTCLC13cfBUJQcmP_tgl8OYHaypqAA",
+        authDomain: "rsk-finaltest.firebaseapp.com",
+        databaseURL: "https://rsk-finaltest.firebaseio.com",
+        projectId: "rsk-finaltest",
+        storageBucket: "",
+        messagingSenderId: "201949253428",
+        appId: "1:201949253428:web:78459569222f8f66"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      const auth = firebase.auth();
+      const db = firebase.firestore();
+    </script>
+
+    <script>
+      auth.onAuthStateChanged(user => {
+        if (user) {
+          /* complaints */
+
+          $("#cSubmit").on("click", function(e) {
+            alert("clicked");
+            var message = $("#complaint").val();
+
+            db.collection("complaints")
+              .add({
+                complaint: message
+              })
+              .then(e => {
+                alert("your complaint is registered, our team will address it");
+              })
+              .catch(e => {
+                console.log(
+                  "unable to register complaint, inconveinece deepley regretted",
+                  e.message
+                );
+              });
+          });
+        } else {
+          console.log("no user");
+        }
+      });
+    </script>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js "
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo "
+      crossorigin="anonymous "
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js "
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 "
+      crossorigin="anonymous "
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js "
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM "
+      crossorigin="anonymous "
+    ></script>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>

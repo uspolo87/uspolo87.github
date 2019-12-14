@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Profile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
+    <style>
+        body {
+            background: -webkit-linear-gradient(left,#7552cd,#a566de);
+        }
+        
+        .emp-profile {
+            padding: 3%;
+            margin-top: 5%;
+            margin-bottom: 3%;
+            border-radius: 0.5rem;
+            background: #fff;
+
+        }
+        
+        .profile-img {
+            text-align: center;
+         
+        }
+        
+        .profile-img img {
+            width: 40%;
+            height: 51%;
+        }
+        
+        .profile-img .file {
+            position: relative;
+            overflow: hidden;
+            margin-top: -20%;
+            width: 70%;
+            border: none;
+            border-radius: 0;
+            font-size: 15px;
+            background: #212529b8;
+        }
+        
+        .profile-img .file input {
+            position: absolute;
+            opacity: 0;
+            right: 0;
+            top: 0;
+        }
+        
+        .profile-head h5 {
+            color: #333;
+            text-align:center;
+        }
+        
+        .profile-head h6 {
+            color: #0062cc;
+        }
+        
+        .profile-edit-btn {
+            border: none;
+            border-radius: 1.5rem;
+            width: 70%;
+            padding: 2%;
+            font-weight: 600;
+            color: #6c757d;
+            cursor: pointer;
+        }
+        
+        .proile-rating {
+            font-size: 12px;
+            color: #818182;
+            margin-top: 5%;
+        }
+        
+        .proile-rating span {
+            color: #495057;
+            font-size: 15px;
+            font-weight: 600;
+        }
+        
+        .profile-head .nav-tabs {
+            margin-bottom: 5%;
+        }
+        
+        .profile-head .nav-tabs .nav-link {
+            font-weight: 600;
+            border: none;
+        }
+        
+        .profile-head .nav-tabs .nav-link.active {
+            border: none;
+            border-bottom: 2px solid #0062cc;
+        }
+        
+        .profile-work {
+            padding: 14%;
+            margin-top: -15%;
+        }
+        
+        .profile-work p {
+            font-size: 12px;
+            color: #818182;
+            font-weight: 600;
+            margin-top: 10%;
+        }
+        
+        .profile-work a {
+            text-decoration: none;
+            color: #495057;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .pack{
+            margin-top:5%
+        }
+        
+        .profile-work ul {
+            list-style: none;
+        }
+        
+        .profile-tab label {
+            font-weight: 600;
+        }
+        
+         p {
+            font-weight: 600;
+            color: #0062cc;
+        }
+        .preloader {
+           background: #fff;
+            width: 100%;
+            height: 5000px;
+            top: 15%;
+            position: relative;
+            }
+
+            .preloader img {
+            position: absolute; 
+            top: 5.8%;
+            left: 31%;
+            width: 138px;
+            }
+
+        @media  screen and (max-width:576px){
+          .emp-profile{
+             width: 90%;
+            height: 722px;
+
+          }
+           .preloader img {
+                position: absolute;
+                top: 5%;
+                left: 11%;
+                width: 313px;
+            }
+            label{
+                margin-bottom:0px;
+                font-size: 14px;
+                line-height: 18px;
+            }
+            .user-data-p{
+                font-size:19px;
+                line-height: 28px;
+            }
+            .back img{
+                width: 37px;
+                left: 33px;
+                position: absolute;
+                top: 37px;
+            }
+         
+
+        }
+
+    
+    </style>
+</head>
+
+<body>
+
+<div class="preloader">
+
+    <img src="images/preLoader.gif"  alt="preloader" >
+
+</div>
+
+ <a href="index.html" class="back"> <img src="images/icons8-left-64.png"  alt="left"> </a> 
+
+   <div class="container emp-profile">
+        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#myModal">Edit <i class="fas fa-user-edit text-white"></i></button>
+        <div class="clearfix"></div>
+            <div class="profile" style="display: none;">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-img">
+                            <img class="user-img" alt=""/>
+                            
+                           
+                        </div>
+                    </div>
+                    <div class="row">                        
+                    </div>
+                    <div class="col-md-6">
+                        <div class="profile-head">
+                                    <h5 class="user-name">
+                                      
+                                    </h5>
+                                   
+                                    
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Pack Information</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+            
+
+                    <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Edit Profile</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+         <form action="#" method="POST">
+              <label for="u-img" class="u-img" style="background: blue; color:white; padding:5px 15px;">Upload Profile Pic
+                                 <input type="file" id="u-img" style="display: none">
+                             </label>
+             <div class="form-group">
+                 <label for="u-name"></label>
+                 <input type="text" name="u-name" class="form-control" id="u-name" placeholder="Enter Name">
+
+             </div>
+             <div class="form-group">
+                 <label for="u-contact"></label>
+                 <input type="text" name="u-name" class="form-control" id="u-contact" placeholder="Enter Contact">
+
+             </div>
+             <div class="form-group">
+                 <label for="u-address"></label>
+                 <input type="text" name="u-name" class="form-control" id="u-address" placeholder="Enter address">
+
+             </div>
+             <div class="form-group">
+                 <label for="u-email"></label>
+                 <input type="text" name="u-name"  class="form-control" id="u-email" placeholder="Enter email">
+
+             </div>
+            <button class="btn btn-info" id="profile-update" type="submit">Update</button>
+         </form>
+        </div>
+        
+       
+        
+      </div>
+    </div>
+  </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                   
+                    </div>
+                    <div class="col-md-8">
+                        <div class="tab-content profile-tab" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>User Id</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p id="user-id" class="user-data-p"></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Name</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p class="user-name user-data-p"></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Email</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p id="user-email" class="user-data-p" ></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Phone</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p id="user-contact" class="user-data-p"></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Address</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p id="user-address" class="user-data-p"></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Setup Box</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p id="user-box" class="user-data-p"></p>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                            </div>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Pack Name</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p id="pack-name"></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Pack Price</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p id="pack-price"></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Last Recharge</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p id="pack-date"></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Payment Id</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p id="pack-id"></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Next Recharge Date</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>28days</p>
+                                            </div>
+                                        </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+              <div class="col-md-10  text-center user-logout" style="display: none;">
+                         <h2>Log in to view your Profile</h2>
+                        <button class="btn btn-info">Log in</button>
+
+                        </div>           
+        </div>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+ <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDZlxTCLC13cfBUJQcmP_tgl8OYHaypqAA",
+            authDomain: "rsk-finaltest.firebaseapp.com",
+            databaseURL: "https://rsk-finaltest.firebaseio.com",
+            projectId: "rsk-finaltest",
+            storageBucket: "",
+            messagingSenderId: "201949253428",
+            appId: "1:201949253428:web:78459569222f8f66"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+    </script>
+
+   
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js " integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 " crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js " integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM " crossorigin="anonymous "></script>
+
+  <script src="js/app.js"></script>
+    
+   
+
+  <script>
+
+    $(document).ready(function(){
+
+        // $('.preloader').css('display','none');
+    })
+
+    var uid;
+    var empProfile = document.querySelector('.profile');
+    var log = document.querySelector('.user-logout');
+    auth.onAuthStateChanged(user => {
+    if (user) {
+
+     empProfile.style.display ="block";
+     log.style.display ="none";
+  
+    window.uid = user.uid;
+    userDetails(user);
+    
+    } else {
+   
+     empProfile.style.display ="none";
+       log.style.display ="block"; 
+    }
+    });
+
+function userDetails(user){
+    db.collection('userDetails').doc(user.uid).get().then(doc => {
+        $('.preloader').css('display','none');
+        $('.user-name').text( doc.data().name);
+        $('#u-name').val( doc.data().name);
+        $('#user-id').text( user.uid);
+        $('#user-contact').text( doc.data().contact);
+        $('#u-contact').val( doc.data().contact);
+        $('#user-email').text( doc.data().email);
+        $('#u-email').val( doc.data().email);
+        $('#user-address').text( doc.data().address);
+        $('#u-address').val( doc.data().address);
+        $('#user-box').text( doc.data().boxId);
+        
+        $('.user-img').attr('src', doc.data().url);
+      
+    });
+    db.collection('userDetails').doc(user.uid).collection('selectedChannels').get().then(doc => {
+        doc.forEach(e => {
+            $('#pack-name').text(e.data().PackName)
+            $('#pack-price').text(e.data().Price)
+            $('#pack-date').text(e.data().Date)
+            $('#pack-id').text(e.data().PaymentId)
+        })
+    })
+
+    $('#profile-update').on('click', function(e){
+        e.preventDefault();
+
+     var name = $('#u-name').val();
+     var address = $('#u-address').val();
+     var email = $('#u-email').val();
+     var contact = $('#u-contact').val();
+     db.collection('userDetails').doc(window.uid).set({
+         name:name,
+         address:address,
+         email:email,
+         contact:contact
+     }).then(e => {
+         console.log('successfully updated');
+         window.location.reload();
+     })
+    })
+}
+
+
+console.log(Notification.permission);
+
+
+
+</script>
+
+   
+ 
+</body>
+
+</html>

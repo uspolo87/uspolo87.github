@@ -1,0 +1,295 @@
+
+<!-- <?php 
+
+$pack_name = $_POST['d-name'];
+$pack_price = $_POST['d-val'];
+?> -->
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>welcome Rinku Cable </title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <!--  meta description here -->
+    <meta name="description" content="">
+    <!--  meta theme-color -->
+    <meta name="theme-color" content="#00273b" />
+        <link rel="manifest" href="/manifest.json">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+ 
+    <link rel="stylesheet" type="text/css" href="css/assets/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="css/assets/css/demo.css">
+    <style>
+        @media screen and (max-width: 580px){
+    .back{
+         position: absolute;
+         left:6px;
+         top:20px;
+     }
+     .back img{
+         cursor: pointer;
+     }
+
+     .mt{
+         margin-top:12%;
+     }
+     .preloader{
+             width: 100%;
+            height: 5000px;
+            background: #545dff;
+            z-index: 9999;
+     }
+     .preloader img{
+         position: relative;
+         top: 4%;
+     }
+     .user-text{
+        font-size: 32px;
+        padding-top: 17%; 
+        letter-spacing: 0.5px;
+     }
+     .user-text-small{
+      font-size: 21px;
+    letter-spacing: 0.4px;
+     }
+
+     
+        }
+
+    </style>
+</head>
+
+<body>         
+
+    <div class="preloader" style="display: none;">
+       <p class="user-text text-center text-white">Please wait</p>
+        <img src="images/printer.gif" alt="printing receipt" class="img-fluid">
+       <p class="text-center text-white user-text-small">we are  printing your bill</p>
+    </div>
+
+<div class="container-fluid">
+        <header>
+        <p id="uid" class="text-white mt"></p>
+        <p id="pack" class="text-white">  </p>
+        <p id="price" class="text-white"> </p>
+  
+        </header>
+        <div class="back">
+    <a href="packages.html"><img src="https://img.icons8.com/flat_round/50/000000/left.png"></a>
+
+</div>
+        <div class="creditCardForm">
+            <div class="heading">
+                <h1>payment</h1>
+              
+            </div>
+            <div class="payment">
+                <form action="#">
+                    <div class="form-group owner">
+                        <label for="owner">Name on the Card</label>
+                        <input type="text" class="form-control" id="owner">
+                    </div>
+                    <div class="form-group CVV">
+                        <label for="cvv">CVV</label>
+                        <input type="password" class="form-control" id="cvv">
+                    </div>
+                    <div class="form-group" id="card-number-field">
+                        <label for="cardNumber">Card Number</label>
+                        <input type="text" class="form-control" id="cardNumber">
+                    </div>
+                    <div class="form-group" id="expiration-date">
+                        <label>Expiration Date</label>
+                        <select>
+                            <option value="01">January</option>
+                            <option value="02">February </option>
+                            <option value="03">March</option>
+                            <option value="04">April</option>
+                            <option value="05">May</option>
+                            <option value="06">June</option>
+                            <option value="07">July</option>
+                            <option value="08">August</option>
+                            <option value="09">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                        <select>
+                            <option value="16"> 2019</option>
+                            <option value="17"> 2020</option>
+                            <option value="18"> 2021</option>
+                            <option value="19"> 2022</option>
+                            <option value="20"> 2023</option>
+                            <option value="21"> 2025</option>
+                            <option value="21"> 2026</option>
+                            <option value="21"> 2027</option>
+                            <option value="21"> 2028</option>
+                            <option value="21"> 2029</option>
+                            <option value="21"> 2030</option>
+                            <option value="21"> 2031</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="credit_cards">
+                        <img src="css/assets/images/visa.jpg" id="visa">
+                        <img src="css/assets/images/mastercard.jpg" id="mastercard">
+                        <img src="css/assets/images/amex.jpg" id="amex">
+                    </div>
+                    <div class="form-group" id="pay-now">
+                        <button type="submit" class="btn btn-default" id="make-payment">Make payment</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="loader">
+        <img src="" alt="">
+    </div>
+ <!-- The core Firebase JS SDK is always required and must be listed first -->
+ <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDZlxTCLC13cfBUJQcmP_tgl8OYHaypqAA",
+            authDomain: "rsk-finaltest.firebaseapp.com",
+            databaseURL: "https://rsk-finaltest.firebaseio.com",
+            projectId: "rsk-finaltest",
+            storageBucket: "",
+            messagingSenderId: "201949253428",
+            appId: "1:201949253428:web:78459569222f8f66"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+    </script>
+
+    <!-- Optional JavaScript -->
+    <script src="https://kit.fontawesome.com/a1f2dcfa97.js "></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js " integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 " crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js " integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM " crossorigin="anonymous "></script>
+
+    <script type="text/javascript" src="https://checkout.razorpay.com/v1/razorpay.js"></script>
+    <script src="css/assets/js/jquery.payform.min.js" charset="utf-8"></script>
+    <script src="css/assets/js/script.js"></script>
+   
+
+  <script>
+
+    document.getElementById('pack').innerHTML = localStorage.getItem('packName')
+    document.getElementById('price').innerHTML = localStorage.getItem('packPrice')
+
+    var uid;
+    var utc = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
+    auth.onAuthStateChanged(user => {
+    if (user) {
+
+    userId(user);
+    window.uid = user.uid
+
+    } else {
+    console.log('no user')
+    }
+    });
+
+
+    function userId(user){
+        $(document).ready(function(){
+        
+            document.getElementById('uid').innerHTML =  'user-id '+ user.uid;
+        })
+    }
+
+
+
+  
+        var razorpay = new Razorpay({
+        key: 'rzp_test_8dUebZGl7jdfRm', 
+        image: 'https://i.imgur.com/n5tjHFD.png'
+      });
+
+    
+     
+     
+$('#make-payment').on('click', function(){
+
+var pack = document.querySelector('#pack').innerText;
+var price = document.querySelector('#price').innerText;
+
+    var data = {
+            amount: 100,
+            currency: "INR",
+            email: 'pulikonda@gmail.com',
+            contact: '8500770307',
+            method: 'card',
+            'card[name]': 'Naveen Kumar',
+            'card[number]': '4111111111111111',
+            'card[cvv]': '018',
+            'card[expiry_month]': '03',
+            'card[expiry_year]': '2022'
+      }
+  
+  razorpay.createPayment(data);
+
+  razorpay.on('payment.success', function(resp) {
+    // alert(resp.razorpay_payment_id),
+    database(resp.razorpay_payment_id,pack,price,window.uid),
+    $('.preloader').css('display','block');
+
+
+   // database(resp.razorpay_payment_id,pack,price,window.uid)
+  //  alert(resp.razorpay_order_id),
+   // alert(resp.razorpay_signature)}); 
+
+  razorpay.on('payment.error', function(resp){alert(resp.error.description)}); 
+
+
+})
+
+
+function database(pid,pack, price,uid) {
+    console.log(pid,pack, price,uid);
+    db.collection('selectedUsers').add({
+        PaymentId: pid,
+        PackName:pack,
+        Price:price,
+        UserId: uid,
+        Date: utc
+    });
+
+    db.collection('userDetails').doc(window.uid).collection('selectedChannels').add({
+        PaymentId: pid,
+        PackName:pack,
+        Price:price,
+        UserId: uid,
+        Date: utc
+    }).then(e => {
+        console.log(e);
+        localStorage.removeItem("packName")
+        localStorage.removeItem("packPrice")
+
+        window.location.href= 'profile.html'
+    }).catch(e => {
+        console.log(e);
+    })
+    }
+     
+});
+  </script>
+
+</body>
+</html>
+
+
+

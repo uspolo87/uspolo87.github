@@ -1,0 +1,239 @@
+
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>welcome Rinku Cable </title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <!--  meta description here -->
+    <meta name="description" content="">
+    <!--  meta theme-color -->
+    <meta name="theme-color" content="#00273b" />
+        <link rel="manifest" href="/manifest.json">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <link rel="stylesheet" href="css/style.css">
+
+     <style>
+  
+     .back{
+         position: absolute;
+         left:6px;
+         top:20px;
+     }
+     .back img{
+         cursor: pointer;
+     }
+
+     .popup-btn{
+     background: #7552c3;
+     display: none;
+    color: white ;
+    padding: 10px 23px ;
+    position: absolute ;
+    right: 0%;
+    bottom: 0%;
+    transition: all 0.25s ease-in-out;
+    position: fixed;
+    border: none;
+    width: 100%;
+     }
+     @media only screen and (max-width:567px){
+       .content-container{
+           padding-top: 25%;
+           
+       }
+       .inner-container{
+         max-width: 90%;
+         margin-left: auto;
+       }
+     }
+     </style>
+
+
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body>
+<nav class="navbar navbar-expand-md   justify-content-sm-start fixed-top">
+  <a class="navbar-brand order-0 order-lg-0 ml-lg-0 mr-2 ml-auto" id="logo" href="#"> Rinku Cable</a>
+  <button class="navbar-toggler justify-content-end" type="button">
+    <div class="bar bar1"></div>
+    <div class="bar bar2"></div>
+    <div class="bar bar3"></div>
+  </button>
+
+  <div class="collapse navbar-collapse  p-3 p-lg-0  mt-lg-0 justify-content-lg-end  d-flex flex-column flex-lg-row flex-xl-row mobileMenu onRight" id="navbarSupportedContent">
+    <ul class="navbar-nav align-self-stretch">
+      <li class="nav-item active log-out" style="display:none">
+        <a class="nav-link nav-items no-dec"  id="login-btn" class="btn btn-default btn-lg log-out" data-toggle="modal"  data-target="#login-modal"  href="#"> <img src="images/icons-login-.png" class="nav-icon"> Log in <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item log-out " style="display:none" > 
+        <a class="nav-link no-dec" href="newconnection.html"> <img src="images/icon-connection.png" class="nav-icon"> New Connection?</a>
+      </li> 
+
+      <li class="nav-item nav-items log-in" style="display:none">
+        <a class=" no-dec" href="profile.html"> <img src="images/user.png" class="nav-icon"> Profile</a>
+      </li> 
+
+      <li class="nav-item nav-items log-in" style="display:none">
+        <a class="no-dec" href="contactUs.html" > <img src="images/complaint.png" class="nav-icon"> Complaints</a>
+      </li> 
+
+      <li class="nav-item nav-items log-in" style="display:none">
+        <a class="no-dec " href="#" > <img src="images/payments.png" class="nav-icon"> Payments</a>
+      </li> 
+
+      
+
+       <li class="nav-item nav-items log-in" style="display:none">
+        <a class="  no-dec" href="packages.html" > <img src="images/packages.png" class="nav-icon"> Packages</a>
+      </li> 
+
+      <!--<li class="nav-item nav-items log-in" style="display:none">
+        <a class="text-white " href="#" > <img src="images/about.png" class="nav-icon"> About Us </a>
+      </li> --> 
+       <li class="nav-item nav-items log-in" style="display:none">
+        <button id="logout"  class="btn no-dec">Log out</button>        
+      </li> 
+    </ul>
+   
+  </div>
+</nav>
+    <div class="container content-container">
+
+ <div class="row">
+           <div class="inner-container">
+        <div class="row" id="window">
+            <div class="col-md-3 card-col">
+                <div class="card card-custom bg-white border-white">
+                    <div class="card-custom-img" style="background-image: url(images/pack-banner.jpg);"></div>
+                    <div class="card-custom-avatar">
+                        <img class="img-fluid" src="images/pack-logo.jpg" alt="Avatar" />
+                    </div>
+                    <div class="card-body" style="overflow-y: auto">
+                        <h4 class="card-title" id="1">South Indian Family Pack</h4>
+                        <p>Cards have minimum height set. You can use Bootstrap</p>
+                    </div>
+                    <div class="card-footer" style="background: inherit; border-color: inherit;">
+                        <a href="#" class="btn btn-primary">200/Month</a>
+                        <div class="float-right mt-2">
+                            <input type="checkbox" value="1" class="pack">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 card-col">
+                <div class="card card-custom bg-white border-white">
+                    <div class="card-custom-img" style="background-image: url(images/pack-banner.jpg);"></div>
+                    <div class="card-custom-avatar">
+                        <img class="img-fluid" src="images/pack-logo.jpg" alt="Avatar" />
+                    </div>
+                    <div class="card-body" style="overflow-y: auto">
+                        <h4 class="card-title" id="2">North Indian pack</h4>
+                        <p class="card-text">Cards have minimum height set. You can use Bootstrap card-deck to align them nicely in a row.</p>
+                    </div>
+                    <div class="card-footer" style="background: inherit; border-color: inherit;">
+                        <a href="#" class="btn btn-primary">300/Month</a>
+                        <div class="float-right mt-2">
+                            <input type="checkbox" value="2" class="pack">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 card-col">
+                <div class="card card-custom bg-white border-white">
+                     <div class="card-custom-img" style="background-image: url(images/pack-banner.jpg);"></div>
+                    <div class="card-custom-avatar">
+                        <img class="img-fluid" src="images/pack-logo.jpg" alt="Avatar" />
+                    </div>
+                    <div class="card-body" style="overflow-y: auto">
+                        <h4 class="card-title" id="3">Tamil + Telugu Pack</h4>
+                        <p class="card-text">Cards have minimum height set. You can use Bootstrap card-deck to align them nicely in a row.</p>
+                    </div>
+                    <div class="card-footer" style="background: inherit; border-color: inherit;">
+                        <a href="#" class="btn btn-primary">400/Month</a>
+                        <div class="float-right mt-2">
+                            <input type="checkbox" value="3" class="pack">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 card-col">
+                <div class="card card-custom bg-white border-white">
+                    <div class="card-custom-img" style="background-image: url(images/pack-banner.jpg);"></div>
+                    <div class="card-custom-avatar">
+                        <img class="img-fluid" src="images/pack-logo.jpg" alt="Avatar" />
+                    </div>
+                    <div class="card-body" style="overflow-y: auto">
+                        <h4 class="card-title" id="4">Kids Pack</h4>
+                        <p class="card-text">Cards have minimum height set. You can use Bootstrap card-deck to align them nicely in a row.</p>
+                    </div>
+                    <div class="card-footer" style="background: inherit; border-color: inherit;">
+                        <a href="#" class="btn btn-primary">300/Month</a>
+                        <div class="float-right mt-2">
+                            <form action="" method="POST"> <input type="checkbox" value="4" class="pack"></form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+      <!-- payment button -->
+
+    <button class=" popup-btn">Pay Now</button>
+
+   
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDZlxTCLC13cfBUJQcmP_tgl8OYHaypqAA",
+            authDomain: "rsk-finaltest.firebaseapp.com",
+            databaseURL: "https://rsk-finaltest.firebaseio.com",
+            projectId: "rsk-finaltest",
+            storageBucket: "",
+            messagingSenderId: "201949253428",
+            appId: "1:201949253428:web:78459569222f8f66"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+    </script></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js " integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 " crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js " integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM " crossorigin="anonymous "></script>
+    
+    <script src="js/custom.js"></script>
+    <script src="js/app.js"></script>
+    
+    <script>
+     auth.onAuthStateChanged(user => {
+    if (user) {
+    console.log('user');
+    
+    } else {
+   console.log("no user")
+    }
+    });
+
+      $('.navbar-toggler').on('click', function(){
+               $('.bar').toggleClass('open');            
+           })
+    </script>
+</body>
+
+</html>
