@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <!--  meta theme-color -->
     <meta name="theme-color" content="#7552cd">
-    <link rel="manifest" href="manifest.json">
+    <!-- <link rel="manifest" href="manifest.json"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="images/icons8-tv-on-64.png">
     <link rel="stylesheet" href="css/style.css">
@@ -20,178 +20,196 @@
 
 <body>
     <div class="header">
-        <nav class="navbar navbar-expand-md   justify-content-sm-start fixed-top">
-            <a class="navbar-brand order-0 order-lg-0 ml-lg-0 mr-2 ml-auto" id="logo" href="#"> Rinku Cable</a>
-            <button class="navbar-toggler justify-content-end" type="button">
-                <div class="bar bar1"></div>
-                <div class="bar bar2"></div>
-                <div class="bar bar3"></div>
-            </button>
-            <div class="collapse navbar-collapse  p-3 p-lg-0  mt-lg-0 justify-content-lg-end  d-flex flex-column flex-lg-row flex-xl-row mobileMenu onRight" id="navbarSupportedContent">
-                <ul class="navbar-nav align-self-stretch">
-                    <li class="nav-item active log-out" style="display:none">
-                        <a class="nav-link nav-items no-dec" id="login-btn" class="btn btn-default btn-lg log-out" data-toggle="modal" data-target="#login-modal" href="#"> <img src="images/icons-login-.png" class="nav-icon"> Log in <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item log-out " style="display:none">
-                        <a class="nav-link no-dec" href="newconnection.html"> <img src="images/icon-connection.png" class="nav-icon"> New Connection?</a>
-                    </li>
-                    <li class="nav-item nav-items log-in" style="display:none">
-                        <a class=" no-dec" href="profile.html"> <img src="images/user.png" class="nav-icon"> Profile</a>
-                    </li>
-                    <li class="nav-item nav-items log-in" style="display:none">
-                        <a class="no-dec" href="contactUs.html"> <img src="images/complaint.png" class="nav-icon"> Complaints</a>
-                    </li>
-                    <li class="nav-item nav-items log-in" style="display:none">
-                        <a class="no-dec" href="#"> <img src="images/payments.png" class="nav-icon"> Payments</a>
-                    </li>
-                    <li class="nav-item nav-items log-in" style="display:none">
-                        <a class="no-dec" href="packages.html"> <img src="images/packages.png" class="nav-icon"> Packages</a>
-                    </li>
-                    <!--<li class="nav-item nav-items log-in" style="display:none">
-                        <a class="text-white " href="#" > <img src="images/about.png" class="nav-icon"> About Us </a>
-                        </li> -->
-                    <li class="nav-item nav-items log-in" style="display:none">
-                        <button id="logout" class="btn no-dec">Log out</button>
-                    </li>
-                </ul>
+        <div class="nav-block">
+            <!-- navbar starts from here -->
+            <nav class="navbar navbar-dark">
+                <a class="navbar-brand" id="logo" href="index.html"> Rinku Cable</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                    <span class="bar top-bar"></span>
+                    <span class="bar bottom-bar"></span>
+                </button>
+                <div class="collapse navbar-collapse nav-collpase-block" id="collapsibleNavbar">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active log-out">
+                            <a class="nav-link nav-items no-dec" id="login-btn" class="btn btn-default btn-lg log-out" data-toggle="modal" data-target="#login-modal" href="#">
+                                <img src="images/icons-login-.png" class="nav-icon"> Log in
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item log-out">
+                            <a class="nav-link no-dec" href="newconnection.html">
+                                <img src="images/icon-connection.png" class="nav-icon"> New Connection?
+                            </a>
+                        </li>
+                        <li class="nav-item nav-items log-in">
+                            <a class="no-dec" href="profile.html">
+                                <img src="images/user.png" class="nav-icon"> Profile
+                                <span class="underline"></span>
+                            </a>
+                        </li>
+                        <li class="nav-item nav-items log-in">
+                            <a class="no-dec" href="contactUs.html">
+                                <img src="images/complaint.png" class="nav-icon"> Complaints
+                                <span class="underline"></span>
+                            </a>
+                        </li>
+                        <li class="nav-item nav-items log-in">
+                            <a class="no-dec" href="#">
+                                <img src="images/payments.png" class="nav-icon"> Payments
+                                <span class="underline"></span>
+                            </a>
+                        </li>
+                        <li class="nav-item nav-items log-in">
+                            <a class="no-dec" href="packages.html">
+                                <img src="images/packages.png" class="nav-icon"> Packages
+                                <span class="underline"></span>
+                            </a>
+                        </li>
+                        <li class="nav-item nav-items log-in">
+                            <button id="logout" class="btn no-dec">Log out</button>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!-- navbar ends here -->
+        </div>
+        <div class="banner-block">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="header-content">
+                        <h2>Hello Connections,</h2>
+                        <h2>welcome to Rinku Cable! </h2>
+                        <p class="mar-p"> With Rinku Cable tv , you can manage services, view statements and pay your bill, get important account notifications and more</p>
+                        <button class="btn btn-default btnAdd" id="header-button">
+                            <img src="images/download-arrow.svg" alt="install icon"> Install
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <img src="images/family-tv.png" alt="family-tv" class="banner-block-img">
+                </div>
             </div>
-        </nav>
-        <div class="body">
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered bd-example-modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-img-div text-center">
+                        <img src="images/home-imageGif.gif" alt="image" class="img-fluid modal-img">
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" id="close">&times;</span>
+                    </button>
+                    <div class="modal-body">
+                        <form action="#" class="login-form">
+                            <div class="form-group">
+                                <span class="user-message text-danger " style="display: none;">please enter
+                                    email/password</span>
+                                <input type="text" id="login-email" placeholder="enter email" class="form-control modal-input">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" id="login-password" placeholder="enter password" class="form-control modal-input">
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn  btn-md login-btn">Log in</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="features">
             <div class="container">
                 <div class="row">
-                    <div class="banner-block">
-                        <div class="col-md-7">
-                            <div class="header-content">
-                                <h2>Hello Connections,</h2>
-                                <h2>welcome to Rinku Cable! </h2>
-                                <p class="mar-p"> With Rinku Cable tv , you can manage services, view statements and pay your bill, get important account notifications and more</p>
-                                <button class="btn btn-default btnAdd" id="header-button" style="display:none;"> <img src="images/install-icon.png" alt="install icon"> Install</button>
+                    <div class="col-md-10  offset-md-1 text-center ">
+                        <h1 class="feature-main-head margin">Features</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="h-card">
+                            <div class="row">
+                                <div class="col-md-3 text-center">
+                                    <div class="icon ">
+                                        <img src="images/registration.png " alt="registration" class="img-fluid f-img text-center">
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <h4 class="feature-head">HASSLE FREE REGISTRATION</h4>
+                                    <p class="feature-para">Our focus is to provide hassle free and quick registration process for Cable TV customers and get unmatched online experience managing Cable TV Connection.</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-5">
-                            <img src="images/family-tv.png" alt="cable tv gif" id="header-img" class="img-fluid">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="h-card">
+                            <div class="row">
+                                <div class="col-md-3 text-center">
+                                    <div class="icon">
+                                        <img src="images/customer-service.png" alt="registration" class="img-fluid f-img">
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <h4 class="feature-head">SERVICE REQUEST(S)</h4>
+                                    <p class="feature-para">"Rinku CableTV " makes it easy to Raise & Manage Service Requests related to your CableTV Connection(s) and get auto updates on progress of service requests registered.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="h-card my-3">
+                            <div class="row ">
+                                <div class="col-md-3 text-center">
+                                    <div class="icon">
+                                        <img src="https://img.icons8.com/plasticine/100/000000/edit-user-male.png" alt="registration" class="img-fluid f-img">
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <h4 class="feature-head">MANAGE PROFILE AND PACKAGES</h4>
+                                    <p class="feature-para pb">Manage your Proflie and Cable TV Channels & Packages Subscription online with Rinku Cable account easily.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="h-card my-3">
+                            <div class="row">
+                                <div class="col-md-3 text-center">
+                                    <div class="icon ">
+                                        <img src="images/payment-img.gif" alt="registration" class="img-fluid f-img ">
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <h4 class="feature-head">SECURE ONLINE PAYMENT</h4>
+                                    <p class="feature-para">With Rinku cable tv account You can Pay monthly Bill Payments using Debit Card, with Smart & Secure payment processing Architecture.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Modal -->
-            <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered bd-example-modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-img-div text-center">
-                            <img src="images/home-imageGif.gif" alt="image" class="img-fluid modal-img">
+        </section>
+        <section class="about-us">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-10 offset-md-1 text-center">
+                                <h1 class="feature-main-head">About Us</h1>
+                            </div>
                         </div>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true" id="close">&times;</span>
-                        </button>
-                        <div class="modal-body">
-                            <form action="#" class="login-form">
-                                <div class="form-group">
-                                    <span class="user-message text-danger " style="display: none;">please enter email/password</span>
-                                    <input type="text" id="login-email" placeholder="enter email" class="form-control modal-input">
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" id="login-password" placeholder="enter password" class="form-control modal-input">
-                                </div>
-                                <div class="text-center">
-                                    <button type="submit" class="btn  btn-md login-btn">Log in</button>
-                                </div>
-                            </form>
-                        </div>
+                        <p class="about-para">"Rinku CableTv " Hyderabad's first Digital platform for Digital Cable TV subscribers to get connected with their Local Cable TV Subscribers.Users can use this platform to manage their Digital Cable TV Set Top Box Connections,Raise
+                            service requests, Make monthly Subscription Prepaid/Postpaid payments Online,view Invoices and Payment history, manage accounts details etc.
+                        </p>
                     </div>
                 </div>
             </div>
-            <section class="features">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-10  offset-md-1 text-center ">
-                            <h1 class="feature-main-head margin">Features</h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="h-card" data-aos="flip-left" data-aos-duration="2000">
-                                <div class="row">
-                                    <div class="col-md-3 text-center" " >
-                                        <div class="icon ">
-                                            <img src="images/registration.png " alt="registration " class="img-fluid f-img text-center ">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-9 ">
-                                        <h4 class="feature-head ">HASSLE FREE REGISTRATION</h4>
-                                        <p class="feature-para ">Our focus is to provide hassle free and quick registration process for Cable TV customers and get unmatched online experience managing Cable TV Connection.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 ">
-                            <div class="h-card " data-aos="flip-right " data-aos-duration="3000 ">
-                                <div class="row ">
-                                    <div class="col-md-3 text-center ">
-                                        <div class="icon ">
-                                            <img src="images/customer-service.png " alt="registration " class="img-fluid f-img ">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-9 ">
-                                        <h4 class="feature-head ">SERVICE REQUEST(S)</h4>
-                                        <p class="feature-para ">"Rinku CableTV " makes it easy to Raise & Manage Service Requests related to your CableTV Connection(s) and get auto updates on progress of service requests registered.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 ">
-                            <div class="h-card my-3 " data-aos="flip-left " data-aos-duration="2000 ">
-                                <div class="row ">
-                                    <div class="col-md-3 text-center "">
-                                        <div class="icon">
-                                            <img src="images/manageprofile.png" alt="registration" class="img-fluid f-img">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-9">
-                                        <h4 class="feature-head ">MANAGE PROFILE AND PACKAGES</h4>
-                                        <p class="feature-para pb">Manage your Proflie and Cable TV Channels & Packages Subscription online with Rinku Cable account easily.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="h-card my-3" data-aos="flip-right" data-aos-duration="3000">
-                                <div class="row">
-                                    <div class="col-md-3 text-center" ">
-                                        <div class="icon ">
-                                            <img src="images/payment-img.gif " alt="registration " class="img-fluid f-img ">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-9 ">
-                                        <h4 class="feature-head ">SECURE ONLINE PAYMENT</h4>
-                                        <p class="feature-para ">With Rinku cable tv account You can Pay monthly  Bill Payments  using Debit Card,  with Smart & Secure payment processing Architecture.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="about-us ">
-                <div class="container-fluid ">
-                    <div class="row rotate ">
-                        <div class="col-md-12 ">
-                            <p class="about-para " data-aos="fade-up "
-                                data-aos-duration="2000 ">"Rinku CableTv " Hyderabad's first Digital platform for Digital Cable TV subscribers to get connected with their Local Cable TV Subscribers.Users can use this platform to manage their Digital Cable TV Set Top Box Connections,Raise service
-                                requests, Make monthly Subscription Prepaid/Postpaid payments Online,view Invoices and Payment history, manage accounts details etc.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row rotate ">
-                        <div class="col-md-10 offset-md-1 text-center mt-5 ">
-                            <h1 class="feature-main-head ">About Us</h1>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!--
+        </section>
+        <!--
                 <section class="channels ">
                     <div class="col-md-10 offset-md-1 text-center mt-5 channels-head ">
                         <h1 class="feature-main-head " style="padding: 20px; ">Channels We offer </h1>
@@ -252,109 +270,93 @@
                 </section>
 
                 -->
-            <section class="download ">
-                <div class="container ">
-                    <div class="row ">
-                        <div class="col-md-10 offset-md-1 text-center mt-5 ">
-                            <h1 class="feature-main-head " style="padding: 15px; ">Download</h1>
-                        </div>
-                    </div>
-                    <div class="row ">
-                        <div class="col-md-12 text-center ">
-                            <img src="images/DownlaodMCT.gif " data-aos="fade-right "
-                                data-aos-offset="300 "
-                                data-aos-easing="ease-in-sine " alt="Mobile GIF " class="img-fluid download ">
-                        </div>
+        <section class="download">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1 text-center mt-5">
+                        <h1 class="feature-main-head " style="padding: 15px; ">Download</h1>
                     </div>
                 </div>
-                <div class="container-fluid pwa ">
-                    <div class="row ">
-                        <div class="col-md-12 text-center ">
-                            <h2 class="text-center text-white " data-aos="fade-down "
-                                data-aos-easing="linear "
-                                >Want to use like App? Download Now and enjoy your app even in offline </h2>
-                        </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="images/DownlaodMCT.gif" alt="Mobile GIF" class="img-fluid download-gif">
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <h2 class="text-center pwa-download-head">Want to use like App?
+                            <span class="text-info">Download</span> Now and enjoy your app even in offline </h2>
                     </div>
                 </div>
-            </section>
-            <section class="contact mb-5 ">
-                <div class="col-md-10 offset-md-1 text-center mt-5 channels-head ">
-                    <h1 class="feature-main-head " style="padding: 20px; ">Contact Us </h1>
-                </div>
-                <div class="container ">
-                    <div class="row ">
-                        <div class="col-md-6 " data-aos="fade-right "
-                            data-aos-offset="300 "
-                            data-aos-easing="ease-in-sine ">
-                            <img src="images/mailbox.gif " alt="contact us " class="img-fluid contact-img ">
-                        </div>
-                        <div class="col-md-6 " data-aos="fade-left "
-                            data-aos-offset="300 "
-                            data-aos-easing="ease-in-sine ">
-                            <form action="# " class="form contact-form ">
-                                <div class="form-group ">
-                                    <label for="name ">
-                                    Name
-                                    </label>
-                                    <input type="text " id="c-name " placeholder="your name" class="form-control ">
-                                </div>
-                                <div class="form-group ">
-                                    <label for="c-contact ">
-                                    Contact
-                                    </label>
-                                    <input type="text " id="c-contact " placeholder="contact number" class="form-control ">
-                                </div>
-                                <div class="form-group ">
-                                    <label for="c-message ">
+            </div>
+        </section>
+        <section class="contact mb-5">
+            <div class="col-md-10 offset-md-1 text-center mt-5 channels-head">
+                <h1 class="feature-main-head" style="padding: 20px; ">Contact Us </h1>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="images/mailbox.gif " alt="contact us" class="img-fluid contact-img">
+                    </div>
+                    <div class="col-md-6" data-aos="fade-left">
+                        <form action="#" class="form contact-form">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="c-name" placeholder="your name" class="form-control ">
+                            </div>
+                            <div class="form-group">
+                                <label for="c-contact">Contact</label>
+                                <input type="text" id="c-contact" placeholder="contact number" class="form-control">
+                            </div>
+                            <div class="form-group ">
+                                <label for="c-message ">
                                     Message
-                                    </label>
-                                    <textarea type="text " id="c-message " placeholder="enter message " class="form-control "></textarea>
-                                </div>
-                                <button class="btn btn-info btn-md contact-button ">submit</button>
-                            </form>
+                                </label>
+                                <textarea type="text " id="c-message " placeholder="enter message " class="form-control "></textarea>
+                            </div>
+                            <button class="btn btn-info btn-md contact-button ">submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="footer">
+            <footer id="myFooter">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h2 class="logo">
+                                <a href="#">LOGO</a>
+                            </h2>
+                        </div>
+                        <div class="col-sm-2">
+                            <h5>Get started</h5>
+                            <ul>
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">Sign up</a></li>
+                                <li><a href="#">Downloads</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-2">
+                            <h5>About us</h5>
+                            <ul>
+                                <li><a href="#">Company Information</a></li>
+                                <li><a href="#">Contact us</a></li>
+                                <li><a href="#">Reviews</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-            </section>
-            <section class="footer ">
-                <footer id="myFooter ">
-                    <div class="container ">
-                        <div class="row ">
-                            <div class="col-sm-3 ">
-                                <h2 class="logo ">
-                                    <a href=" ">LOGO</a>
-                                </h2>
-                            </div>
-                            <div class="col-sm-2 ">
-                                <h5>Get started</h5>
-                                <ul>
-                                    <li><a href="# ">Home</a></li>
-                                    <li><a href="# ">Sign up</a></li>
-                                    <li><a href="# ">Downloads</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-sm-2 ">
-                                <h5>About us</h5>
-                                <ul>
-                                    <li><a href="# ">Company Information</a></li>
-                                    <li><a href="# ">Contact us</a></li>
-                                    <li><a href="# ">Reviews</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="footer-copyright ">
-                        <p>© 2019 Copyright </p>
-                    </div>
-                </footer>
-                <!-- <div class="col-md-2 float-right ">
+                <div class="footer-copyright">
+                    <p>© 2019 Copyright </p>
+                </div>
+            </footer>
+            <!-- <div class="col-md-2 float-right ">
                     <div class="backtotop ">
                         <img src="http://trantor.sheridanc.on.ca/student/nasirmuh/Images/Back-to-Top.png " alt=" " class="img-fluid b-top ">
                     </div>
 
                       </div> -->
-            </section>
-        </div>
+        </section>
         <!-- The core Firebase JS SDK is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-app.js "></script>
         <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-auth.js "></script>
@@ -384,22 +386,23 @@
         <script src="js/custom.js "></script>
         <script src="js/app.js "></script>
         <script>
-            $(document).ready(function(){
+            $(document).ready(function() {
 
-                   $('.b-top').on('click', function(){
-                       $('body,html').scrollTop(0);
-                   })
+                $('.b-top').on('click', function() {
+                    $('body,html').scrollTop(0);
+                })
 
-                   $('.navbar-toggler').on('click', function(){
-                       $('.bar').toggleClass('open');
+                $('.navbar-toggler').on('click', function() {
+                    $('.bar').toggleClass('open');
                     // $('.body').toggleClass('body-blur');
-                     $("body ").toggleClass('fixed')
-                     $(".body ").toggleClass('blur')
+                    $("body ").toggleClass('fixed')
+                    $(".body ").toggleClass('blur')
 
-                   })
+                })
 
-                $('.preloader').css('display','none');
+                $('.preloader').css('display', 'none');
             })
         </script>
-    </body>
+</body>
+
 </html>

@@ -1,22 +1,22 @@
 {
-  "short_name": "Rinku Cable",
-  "name": "Rinku Cable TV",
-  "start_url": "/index.html",
-  "display": "standalone",
-  "background_color": "#7552cd",
-  "theme_color": "#7552cd",
+    "short_name": "Rinku Cable",
+    "name": "Rinku Cable TV",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#7552cd",
+    "theme_color": "#7552cd",
 
-  "icons": [{
-      "src": "/images/mobile-logo.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "/images/icons512.png",
-      "type": "image/png",
-      "sizes": "512x512"
-    }
-  ],
-  "gcm_sender_id": "201949253428"
+    "icons": [{
+            "src": "/images/icons512.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "/images/icons512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "gcm_sender_id": "201949253428"
 
 }

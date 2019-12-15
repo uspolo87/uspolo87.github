@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>welcome Rinku Cable </title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <!--  meta description here -->
+    <meta name="description" content="">
+    <!--  meta theme-color -->
+    <meta name="theme-color" content="#00273b" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        .col-md-3 img {
+            height: 159px;
+            width: 161px;
+            border-radius: 45px;
+            margin: 10px;
+        }
+        
+        .col-md-3 {
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        #logo {
+            color: orange;
+        }
+        
+        .content {
+            margin-top: 10%;
+        }
+        
+        .con-info {
+            margin-top: 25px;
+        }
+        
+        .p {
+            font-size: 20px;
+            margin-top: 25px;
+            color: orange;
+        }
+        
+        .content-container {
+            padding: 100px;
+        }
+        
+        a:hover {
+            text-decoration: none;
+        }
+        
+        @media screen and (max-width: 500px) {
+            #logo {
+                margin: 0;
+                font-size: 21px;
+            }
+            #logout {
+                font-size: 13px;
+            }
+            body {
+                overflow-x: hidden;
+            }
+            .col-md-3 img {
+                height: 70px;
+                width: 70px;
+                border-radius: 45px;
+                margin: 20px;
+            }
+            .con-info {
+                font-size: 18px;
+                margin-top: 2px;
+            }
+            .content-container {
+                padding: 0px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <div class="d-flex flex-row justify-content-between p-3">
+
+            <div class="logo">
+                <h1 id="logo">Rinku Cable Tv</h1>
+            </div>
+            <div class="nav-items">
+                <button class="btn btn-default btn-lg log-out text-warning" style="display: none;" data-toggle="modal" data-target="#login-modal" id="login-btn">Log In</button>
+                <button class="btn btn-default btn-lg text-warning log-out " style="display: none;">New Connection?</button>
+
+                <button class="btn btn-default btn-lg text-warning log-in  " id="logout"><i class="fas fa-sign-out-alt"></i>logout</button>
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+
+    <div class="container content-container">
+
+        <div class="row">
+
+            <div class=" col-md-3  text-center">
+                <a href="packages.html">
+                    <img src="images/packages.png" alt="packages" class="packege-img">
+                    <h3 class="con-info">Packages </h3>
+                </a>
+            </div>
+
+            <div class="  col-md-3  text-center">
+                <a href="profile.html">
+                    <img src="images/profile-home.gif" alt="packages" class="profile-img img-fluid">
+                    <h3 class="con-info"> Profile</h3>
+                </a>
+
+            </div>
+
+            <div class="col-md-3  text-center">
+                <a href="contactUs.html">
+                    <img src="images/Chat.png" alt="packages" class="profile-img img-fluid">
+                    <h3 class="con-info"> Contact Us </h3>
+                </a>
+
+            </div>
+            <div class="col-md-3  col-sm-6 col-xs-6 text-center">
+                <a href="#">
+                    <img src="images/contact_us.png" alt="packages" class="profile-img img-fluid">
+                    <h3 class="con-info"> About Us </h3>
+                </a>
+
+            </div>
+
+
+
+
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-app.js "></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-auth.js "></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-firestore.js "></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDZlxTCLC13cfBUJQcmP_tgl8OYHaypqAA ",
+            authDomain: "rsk-finaltest.firebaseapp.com ",
+            databaseURL: "https://rsk-finaltest.firebaseio.com ",
+            projectId: "rsk-finaltest ",
+            storageBucket: " ",
+            messagingSenderId: "201949253428 ",
+            appId: "1:201949253428:web:78459569222f8f66 "
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+    </script>
+
+    <!-- Optional JavaScript -->
+    <script src="https://kit.fontawesome.com/a1f2dcfa97.js "></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js " integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 " crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js " integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM " crossorigin="anonymous "></script>
+
+</body>
+
+</html>
