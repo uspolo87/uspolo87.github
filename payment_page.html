@@ -1,4 +1,3 @@
-
 <!-- <?php 
 
 $pack_name = $_POST['d-name'];
@@ -16,76 +15,72 @@ $pack_price = $_POST['d-val'];
     <meta name="description" content="">
     <!--  meta theme-color -->
     <meta name="theme-color" content="#00273b" />
-        <link rel="manifest" href="/manifest.json">
+    <!-- <link rel="manifest" href="/manifest.json"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
- 
+
     <link rel="stylesheet" type="text/css" href="css/assets/css/styles.css">
     <link rel="stylesheet" type="text/css" href="css/assets/css/demo.css">
     <style>
-        @media screen and (max-width: 580px){
-    .back{
-         position: absolute;
-         left:6px;
-         top:20px;
-     }
-     .back img{
-         cursor: pointer;
-     }
-
-     .mt{
-         margin-top:12%;
-     }
-     .preloader{
-             width: 100%;
-            height: 5000px;
-            background: #545dff;
-            z-index: 9999;
-     }
-     .preloader img{
-         position: relative;
-         top: 4%;
-     }
-     .user-text{
-        font-size: 32px;
-        padding-top: 17%; 
-        letter-spacing: 0.5px;
-     }
-     .user-text-small{
-      font-size: 21px;
-    letter-spacing: 0.4px;
-     }
-
-     
+        @media screen and (max-width: 580px) {
+            .back {
+                position: absolute;
+                left: 6px;
+                top: 20px;
+            }
+            .back img {
+                cursor: pointer;
+            }
+            .mt {
+                margin-top: 12%;
+            }
+            .preloader {
+                width: 100%;
+                height: 5000px;
+                background: #545dff;
+                z-index: 9999;
+            }
+            .preloader img {
+                position: relative;
+                top: 4%;
+            }
+            .user-text {
+                font-size: 32px;
+                padding-top: 17%;
+                letter-spacing: 0.5px;
+            }
+            .user-text-small {
+                font-size: 21px;
+                letter-spacing: 0.4px;
+            }
         }
-
     </style>
 </head>
 
-<body>         
+<body>
 
     <div class="preloader" style="display: none;">
-       <p class="user-text text-center text-white">Please wait</p>
+        <p class="user-text text-center text-white">Please wait</p>
         <img src="images/printer.gif" alt="printing receipt" class="img-fluid">
-       <p class="text-center text-white user-text-small">we are  printing your bill</p>
+        <p class="text-center text-white user-text-small">we are printing your bill</p>
     </div>
 
-<div class="container-fluid">
+    <div class="container-fluid">
         <header>
-        <p id="uid" class="text-white mt"></p>
-        <p id="pack" class="text-white">  </p>
-        <p id="price" class="text-white"> </p>
-  
+            <p id="uid" class="text-white mt"></p>
+            <p id="pack" class="text-white"> </p>
+            <p id="price" class="text-white"> </p>
+
         </header>
         <div class="back">
-    <a href="packages.html"><img src="https://img.icons8.com/flat_round/50/000000/left.png"></a>
+            <a href="packages.html"><img src="https://img.icons8.com/flat_round/50/000000/left.png"></a>
 
-</div>
+        </div>
         <div class="creditCardForm">
             <div class="heading">
                 <h1>payment</h1>
-              
+
             </div>
             <div class="payment">
                 <form action="#">
@@ -148,148 +143,146 @@ $pack_price = $_POST['d-val'];
     <div class="loader">
         <img src="" alt="">
     </div>
- <!-- The core Firebase JS SDK is always required and must be listed first -->
- <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-app.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-firestore.js"></script>
 
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#config-web-app -->
+
 
     <script>
         // Your web app's Firebase configuration
         var firebaseConfig = {
-            apiKey: "AIzaSyDZlxTCLC13cfBUJQcmP_tgl8OYHaypqAA",
-            authDomain: "rsk-finaltest.firebaseapp.com",
-            databaseURL: "https://rsk-finaltest.firebaseio.com",
-            projectId: "rsk-finaltest",
-            storageBucket: "",
-            messagingSenderId: "201949253428",
-            appId: "1:201949253428:web:78459569222f8f66"
+            apiKey: "AIzaSyCjOPK6CyVfDAPO_512d43T9S6sIXHVrmI",
+            authDomain: "cable-launch-test-project.firebaseapp.com",
+            databaseURL: "https://cable-launch-test-project.firebaseio.com",
+            projectId: "cable-launch-test-project",
+            storageBucket: "cable-launch-test-project.appspot.com",
+            messagingSenderId: "270278220532",
+            appId: "1:270278220532:web:6eeb345f53d678dac41ca1",
+            measurementId: "G-9GRSG52KLG"
         };
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
-        const auth = firebase.auth();
-        const db = firebase.firestore();
+        var auth = firebase.auth();
+        var db = firebase.firestore();
     </script>
 
     <!-- Optional JavaScript -->
     <script src="https://kit.fontawesome.com/a1f2dcfa97.js "></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js " integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 " crossorigin="anonymous "></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js " integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM " crossorigin="anonymous "></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+    </script>
 
     <script type="text/javascript" src="https://checkout.razorpay.com/v1/razorpay.js"></script>
     <script src="css/assets/js/jquery.payform.min.js" charset="utf-8"></script>
     <script src="css/assets/js/script.js"></script>
-   
 
-  <script>
+    <script>
+        document.getElementById('pack').innerHTML = localStorage.getItem('packName')
+        document.getElementById('price').innerHTML = localStorage.getItem('packPrice')
 
-    document.getElementById('pack').innerHTML = localStorage.getItem('packName')
-    document.getElementById('price').innerHTML = localStorage.getItem('packPrice')
+        var uid;
+        var utc = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
+        auth.onAuthStateChanged(user => {
+            if (user) {
 
-    var uid;
-    var utc = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
-    auth.onAuthStateChanged(user => {
-    if (user) {
+                userId(user);
+                window.uid = user.uid
 
-    userId(user);
-    window.uid = user.uid
-
-    } else {
-    console.log('no user')
-    }
-    });
+            } else {
+                console.log('no user')
+            }
+        });
 
 
-    function userId(user){
-        $(document).ready(function(){
-        
-            document.getElementById('uid').innerHTML =  'user-id '+ user.uid;
-        })
-    }
+        function userId(user) {
+            $(document).ready(function() {
 
+                document.getElementById('uid').innerHTML = 'user-id ' + user.uid;
+            })
+        }
 
-
-  
         var razorpay = new Razorpay({
-        key: 'rzp_test_8dUebZGl7jdfRm', 
-        image: 'https://i.imgur.com/n5tjHFD.png'
-      });
-
-    
-     
-     
-$('#make-payment').on('click', function(){
-
-var pack = document.querySelector('#pack').innerText;
-var price = document.querySelector('#price').innerText;
-
-    var data = {
-            amount: 100,
-            currency: "INR",
-            email: 'pulikonda@gmail.com',
-            contact: '8500770307',
-            method: 'card',
-            'card[name]': 'Naveen Kumar',
-            'card[number]': '4111111111111111',
-            'card[cvv]': '018',
-            'card[expiry_month]': '03',
-            'card[expiry_year]': '2022'
-      }
-  
-  razorpay.createPayment(data);
-
-  razorpay.on('payment.success', function(resp) {
-    // alert(resp.razorpay_payment_id),
-    database(resp.razorpay_payment_id,pack,price,window.uid),
-    $('.preloader').css('display','block');
+            key: 'rzp_test_8dUebZGl7jdfRm',
+            image: 'https://i.imgur.com/n5tjHFD.png'
+        });
 
 
-   // database(resp.razorpay_payment_id,pack,price,window.uid)
-  //  alert(resp.razorpay_order_id),
-   // alert(resp.razorpay_signature)}); 
-
-  razorpay.on('payment.error', function(resp){alert(resp.error.description)}); 
 
 
-})
+        $('#make-payment').on('click', function() {
+
+            var pack = document.querySelector('#pack').innerText;
+            var price = document.querySelector('#price').innerText;
+
+            var data = {
+                amount: 100,
+                currency: "INR",
+                email: 'pulikonda@gmail.com',
+                contact: '8500770307',
+                method: 'card',
+                'card[name]': 'Naveen Kumar',
+                'card[number]': '4111111111111111',
+                'card[cvv]': '018',
+                'card[expiry_month]': '03',
+                'card[expiry_year]': '2022'
+            }
+
+            razorpay.createPayment(data);
+
+            razorpay.on('payment.success', function(resp) {
+                // alert(resp.razorpay_payment_id),
+                database(resp.razorpay_payment_id, pack, price, window.uid),
+                    $('.preloader').css('display', 'block');
 
 
-function database(pid,pack, price,uid) {
-    console.log(pid,pack, price,uid);
-    db.collection('selectedUsers').add({
-        PaymentId: pid,
-        PackName:pack,
-        Price:price,
-        UserId: uid,
-        Date: utc
-    });
+                // database(resp.razorpay_payment_id,pack,price,window.uid)
+                //  alert(resp.razorpay_order_id),
+                // alert(resp.razorpay_signature)}); 
 
-    db.collection('userDetails').doc(window.uid).collection('selectedChannels').add({
-        PaymentId: pid,
-        PackName:pack,
-        Price:price,
-        UserId: uid,
-        Date: utc
-    }).then(e => {
-        console.log(e);
-        localStorage.removeItem("packName")
-        localStorage.removeItem("packPrice")
+                razorpay.on('payment.error', function(resp) {
+                    alert(resp.error.description)
+                });
 
-        window.location.href= 'profile.html'
-    }).catch(e => {
-        console.log(e);
-    })
-    }
-     
-});
-  </script>
+
+            })
+
+
+            function database(pid, pack, price, uid) {
+                console.log(pid, pack, price, uid);
+                db.collection('selectedUsers').add({
+                    PaymentId: pid,
+                    PackName: pack,
+                    Price: price,
+                    UserId: uid,
+                    Date: utc
+                });
+
+                db.collection('userDetails').doc(window.uid).collection('selectedChannels').add({
+                    PaymentId: pid,
+                    PackName: pack,
+                    Price: price,
+                    UserId: uid,
+                    Date: utc
+                }).then(e => {
+                    console.log(e);
+                    localStorage.removeItem("packName")
+                    localStorage.removeItem("packPrice")
+
+                    window.location.href = 'profile.html'
+                }).catch(e => {
+                    console.log(e);
+                })
+            }
+
+        });
+    </script>
 
 </body>
+
 </html>
-
-
-

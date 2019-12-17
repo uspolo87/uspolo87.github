@@ -11,7 +11,7 @@
     <meta name="theme-color" content="#7552cd">
     <!-- <link rel="manifest" href="manifest.json"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" href="images/icons8-tv-on-64.png">
+    <link rel="icon" href="images/favicon.png">
     <link rel="stylesheet" href="css/style.css">
     <!--<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> -->
     <!-- Bootstrap CSS -->
@@ -32,7 +32,7 @@
                     <ul class="navbar-nav">
                         <li class="nav-item active log-out">
                             <a class="nav-link nav-items no-dec" id="login-btn" class="btn btn-default btn-lg log-out" data-toggle="modal" data-target="#login-modal" href="#">
-                                <img src="images/icons-login-.png" class="nav-icon"> Log in
+                                <img src="images/icons-login.png" class="nav-icon"> Log in
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
@@ -78,7 +78,7 @@
                 <div class="col-md-6">
                     <div class="header-content">
                         <h2>Hello Connections,</h2>
-                        <h2>welcome to Rinku Cable! </h2>
+                        <h2 class="header-content-second">welcome to Rinku Cable! </h2>
                         <p class="mar-p"> With Rinku Cable tv , you can manage services, view statements and pay your bill, get important account notifications and more</p>
                         <button class="btn btn-default btnAdd" id="header-button">
                             <img src="images/download-arrow.svg" alt="install icon"> Install
@@ -104,15 +104,16 @@
                     <div class="modal-body">
                         <form action="#" class="login-form">
                             <div class="form-group">
-                                <span class="user-message text-danger " style="display: none;">please enter
-                                    email/password</span>
-                                <input type="text" id="login-email" placeholder="enter email" class="form-control modal-input">
+                                <div class="alert alert-danger alert-dismissible fade show login-error-message">
+                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                </div>
+                                <input type="text" id="login-email" required="required" placeholder="enter email" class="form-control modal-input">
                             </div>
                             <div class="form-group">
-                                <input type="password" id="login-password" placeholder="enter password" class="form-control modal-input">
+                                <input type="password" id="login-password" required="required" placeholder="enter password" class="form-control modal-input">
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn  btn-md login-btn">Log in</button>
+                                <button type="submit" class="btn btn-md login-btn">Log in</button>
                             </div>
                         </form>
                     </div>
@@ -127,9 +128,11 @@
                     </div>
                 </div>
             </div>
-            <div class="container">
+            <!------------------------- featured cards starts here ------------------------->
+            <div class="container features-container">
                 <div class="row">
                     <div class="col-md-6">
+                        <!-- card -->
                         <div class="h-card">
                             <div class="row">
                                 <div class="col-md-3 text-center">
@@ -139,12 +142,14 @@
                                 </div>
                                 <div class="col-md-9">
                                     <h4 class="feature-head">HASSLE FREE REGISTRATION</h4>
-                                    <p class="feature-para">Our focus is to provide hassle free and quick registration process for Cable TV customers and get unmatched online experience managing Cable TV Connection.</p>
+                                    <p class="feature-para">Our focus is to provide hassle free and quick registration process for Cable TV customers and get unmatched online experience managing Cable TV Connection.
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
+                        <!-- card -->
                         <div class="h-card">
                             <div class="row">
                                 <div class="col-md-3 text-center">
@@ -160,6 +165,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
+                        <!-- card -->
                         <div class="h-card my-3">
                             <div class="row ">
                                 <div class="col-md-3 text-center">
@@ -175,6 +181,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
+                        <!-- card -->
                         <div class="h-card my-3">
                             <div class="row">
                                 <div class="col-md-3 text-center">
@@ -278,10 +285,10 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6 download-column">
                         <img src="images/DownlaodMCT.gif" alt="Mobile GIF" class="img-fluid download-gif">
                     </div>
-                    <div class="col-md-6 text-center">
+                    <div class="col-md-6 text-center download-column">
                         <h2 class="text-center pwa-download-head">Want to use like App?
                             <span class="text-info">Download</span> Now and enjoy your app even in offline </h2>
                     </div>
@@ -324,9 +331,9 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-3">
-                            <h2 class="logo">
+                            <!-- <h2 class="logo">
                                 <a href="#">LOGO</a>
-                            </h2>
+                            </h2> -->
                         </div>
                         <div class="col-sm-2">
                             <h5>Get started</h5>
@@ -358,49 +365,37 @@
                       </div> -->
         </section>
         <!-- The core Firebase JS SDK is always required and must be listed first -->
-        <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-app.js "></script>
-        <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-auth.js "></script>
-        <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-firestore.js "></script>
-        <!-- TODO: Add SDKs for Firebase products that you want to use
-            https://firebase.google.com/docs/web/setup#config-web-app -->
+        <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-firestore.js"></script>
+
         <script>
             // Your web app's Firebase configuration
             var firebaseConfig = {
-                apiKey: "AIzaSyDZlxTCLC13cfBUJQcmP_tgl8OYHaypqAA ",
-                authDomain: "rsk-finaltest.firebaseapp.com ",
-                databaseURL: "https://rsk-finaltest.firebaseio.com ",
-                projectId: "rsk-finaltest ",
-                storageBucket: " ",
-                messagingSenderId: "201949253428 ",
-                appId: "1:201949253428:web:78459569222f8f66 "
+                apiKey: "AIzaSyCjOPK6CyVfDAPO_512d43T9S6sIXHVrmI",
+                authDomain: "cable-launch-test-project.firebaseapp.com",
+                databaseURL: "https://cable-launch-test-project.firebaseio.com",
+                projectId: "cable-launch-test-project",
+                storageBucket: "cable-launch-test-project.appspot.com",
+                messagingSenderId: "270278220532",
+                appId: "1:270278220532:web:6eeb345f53d678dac41ca1",
+                measurementId: "G-9GRSG52KLG"
             };
+
             // Initialize Firebase
             firebase.initializeApp(firebaseConfig);
-            const auth = firebase.auth();
-            const db = firebase.firestore();
+            var auth = firebase.auth();
+            var db = firebase.firestore();
         </script>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js " integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 " crossorigin="anonymous "></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js " integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM " crossorigin="anonymous "></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <script src="js/function.js "></script>
         <script src="js/custom.js "></script>
         <script src="js/app.js "></script>
         <script>
-            $(document).ready(function() {
-
-                $('.b-top').on('click', function() {
-                    $('body,html').scrollTop(0);
-                })
-
-                $('.navbar-toggler').on('click', function() {
-                    $('.bar').toggleClass('open');
-                    // $('.body').toggleClass('body-blur');
-                    $("body ").toggleClass('fixed')
-                    $(".body ").toggleClass('blur')
-
-                })
-
-                $('.preloader').css('display', 'none');
+            $('.navbar-toggler').on('click', function() {
+                $('.bar').toggleClass('open');
             })
         </script>
 </body>

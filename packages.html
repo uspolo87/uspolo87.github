@@ -11,13 +11,13 @@
     <meta name="description" content="">
     <!--  meta theme-color -->
     <meta name="theme-color" content="#00273b" />
-    <link rel="manifest" href="/manifest.json">
+    <!-- <link rel="manifest" href="/manifest.json"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="css/style.css">
 
     <style>
         body {
-            background-image: url("C:/Users/Sandeep Reddy/Desktop/cable design/public/images/about-bg.png");
+            /* background-image: url("C:/Users/Sandeep Reddy/Desktop/cable design/public/images/about-bg.png"); */
         }
         
         .back {
@@ -36,12 +36,82 @@
             color: white;
             padding: 10px 23px;
             position: absolute;
-            right: 0%;
-            bottom: 0%;
+            right: 2%;
+            bottom: 9%;
             transition: all 0.25s ease-in-out;
             position: fixed;
             border: none;
-            width: 100%;
+            width: 18%;
+        }
+        
+        .content-container {
+            padding-top: 5%;
+        }
+        
+        .radio {
+            position: relative;
+            cursor: pointer;
+            line-height: 20px;
+            font-size: 14px;
+            margin: 15px;
+        }
+        
+        .radio .label {
+            position: relative;
+            display: block;
+            float: left;
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #c8ccd4;
+            border-radius: 100%;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .radio .label:after {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 10px;
+            height: 10px;
+            border-radius: 100%;
+            background: #225cff;
+            transform: scale(0);
+            transition: all 0.2s ease;
+            opacity: 0.08;
+            pointer-events: none;
+        }
+        
+        .radio:hover .label:after {
+            transform: scale(3.6);
+        }
+        
+        input[type="radio"]:checked+.label {
+            border-color: #225cff;
+        }
+        
+        input[type="radio"]:checked+.label:after {
+            transform: scale(1);
+            transition: all 0.2s cubic-bezier(0.35, 0.9, 0.4, 0.9);
+            opacity: 1;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .select-label {
+            font-size: 13px;
+            display: block;
+            margin-left: -3px;
+            margin-top: -15px;
+        }
+        
+        @keyframes wave {
+            50% {
+                transform: scale(0.9);
+            }
         }
         
         @media only screen and (max-width:567px) {
@@ -62,70 +132,28 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md   justify-content-sm-start fixed-top">
-        <a class="navbar-brand order-0 order-lg-0 ml-lg-0 mr-2 ml-auto" id="logo" href="#"> Rinku Cable</a>
-        <button class="navbar-toggler justify-content-end" type="button">
-    <div class="bar bar1"></div>
-    <div class="bar bar2"></div>
-    <div class="bar bar3"></div>
-  </button>
 
-        <div class="collapse navbar-collapse  p-3 p-lg-0  mt-lg-0 justify-content-lg-end  d-flex flex-column flex-lg-row flex-xl-row mobileMenu onRight" id="navbarSupportedContent">
-            <ul class="navbar-nav align-self-stretch">
-                <li class="nav-item active log-out" style="display:none">
-                    <a class="nav-link nav-items no-dec" id="login-btn" class="btn btn-default btn-lg log-out" data-toggle="modal" data-target="#login-modal" href="#"> <img src="images/icons-login-.png" class="nav-icon"> Log in <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item log-out " style="display:none">
-                    <a class="nav-link no-dec" href="newconnection.html"> <img src="images/icon-connection.png" class="nav-icon"> New Connection?</a>
-                </li>
-
-                <li class="nav-item nav-items log-in" style="display:none">
-                    <a class=" no-dec" href="profile.html"> <img src="images/user.png" class="nav-icon"> Profile</a>
-                </li>
-
-                <li class="nav-item nav-items log-in" style="display:none">
-                    <a class="no-dec" href="contactUs.html"> <img src="images/complaint.png" class="nav-icon"> Complaints</a>
-                </li>
-
-                <li class="nav-item nav-items log-in" style="display:none">
-                    <a class="no-dec " href="#"> <img src="images/payments.png" class="nav-icon"> Payments</a>
-                </li>
-
-
-
-                <li class="nav-item nav-items log-in" style="display:none">
-                    <a class="  no-dec" href="packages.html"> <img src="images/packages.png" class="nav-icon"> Packages</a>
-                </li>
-
-                <!--<li class="nav-item nav-items log-in" style="display:none">
-        <a class="text-white " href="#" > <img src="images/about.png" class="nav-icon"> About Us </a>
-      </li> -->
-                <li class="nav-item nav-items log-in" style="display:none">
-                    <button id="logout" class="btn no-dec">Log out</button>
-                </li>
-            </ul>
-
-        </div>
-    </nav>
     <div class="container content-container">
-
         <div class="row">
             <div class="inner-container">
                 <div class="row" id="window">
                     <div class="col-md-3 card-col">
                         <div class="card card-custom bg-white border-white">
                             <div class="card-custom-img" style="background-image: url(images/pack-banner.jpg);"></div>
-                            <div class="card-custom-avatar">
-                                <img class="img-fluid" src="images/pack-logo.jpg" alt="Avatar" />
-                            </div>
                             <div class="card-body" style="overflow-y: auto">
-                                <h4 class="card-title" id="1">South Indian Family Pack</h4>
-                                <p>Cards have minimum height set. You can use Bootstrap</p>
+                                <h4 class="card-title" id="200">South Indian Family Pack</h4>
                             </div>
                             <div class="card-footer" style="background: inherit; border-color: inherit;">
-                                <a href="#" class="btn btn-primary">200/Month</a>
-                                <div class="float-right mt-2">
-                                    <input type="checkbox" value="1" class="pack">
+                                <p class="d-inline-block">200/Month</p>
+                                <div class="float-right">
+                                    <div class="pack-checkbox">
+                                        <label for="first-pack-radio-button" class="radio">
+                                            <input type="radio" value="200" name="rdo" id="first-pack-radio-button"
+                                                class="hidden pack-radio" />
+                                            <span class="label"></span>
+                                            <span class="select-label">select</span>
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -133,17 +161,44 @@
                     <div class="col-md-3 card-col">
                         <div class="card card-custom bg-white border-white">
                             <div class="card-custom-img" style="background-image: url(images/pack-banner.jpg);"></div>
-                            <div class="card-custom-avatar">
-                                <img class="img-fluid" src="images/pack-logo.jpg" alt="Avatar" />
-                            </div>
                             <div class="card-body" style="overflow-y: auto">
-                                <h4 class="card-title" id="2">North Indian pack</h4>
-                                <p class="card-text">Cards have minimum height set. You can use Bootstrap card-deck to align them nicely in a row.</p>
+                                <h4 class="card-title" id="300">North Indian pack</h4>
+                                <p class="card-text"></p>
                             </div>
                             <div class="card-footer" style="background: inherit; border-color: inherit;">
-                                <a href="#" class="btn btn-primary">300/Month</a>
-                                <div class="float-right mt-2">
-                                    <input type="checkbox" value="2" class="pack">
+                                <p class="d-inline-block">300/Month</p class="d-inline-block">
+                                <div class="float-right">
+                                    <div class="pack-checkbox">
+                                        <label for="second-pack-radio-button" class="radio">
+                                            <input type="radio" name="rdo" value="300" id="second-pack-radio-button"
+                                                class="hidden pack-radio" />
+                                            <span class="label"></span>
+                                            <span class="select-label">select</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 card-col">
+                        <div class="card card-custom bg-white border-white">
+                            <div class="card-custom-img" style="background-image: url(images/pack-banner.jpg);"></div>
+                            <div class="card-body" style="overflow-y: auto">
+                                <h4 class="card-title" id="400">Tamil + Telugu Pack</h4>
+                                <p class="card-text"></p>
+                            </div>
+                            <div class="card-footer" style="background: inherit; border-color: inherit;">
+                                <p class="d-inline-block">400/Month</p>
+                                <div class="float-right">
+                                    <div class="pack-checkbox">
+                                        <label for="third-pack-radio-button" class="radio">
+                                            <input type="radio" name="rdo" value="400" id="third-pack-radio-button"
+                                                class="hidden pack-radio" />
+                                            <span class="label"></span>
+                                            <span class="select-label">select</span>
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -151,35 +206,21 @@
                     <div class="col-md-3 card-col">
                         <div class="card card-custom bg-white border-white">
                             <div class="card-custom-img" style="background-image: url(images/pack-banner.jpg);"></div>
-                            <div class="card-custom-avatar">
-                                <img class="img-fluid" src="images/pack-logo.jpg" alt="Avatar" />
-                            </div>
                             <div class="card-body" style="overflow-y: auto">
-                                <h4 class="card-title" id="3">Tamil + Telugu Pack</h4>
-                                <p class="card-text">Cards have minimum height set. You can use Bootstrap card-deck to align them nicely in a row.</p>
+                                <h4 class="card-title" id="500">Kids Pack</h4>
+                                <p class="card-text"></p>
                             </div>
                             <div class="card-footer" style="background: inherit; border-color: inherit;">
-                                <a href="#" class="btn btn-primary">400/Month</a>
-                                <div class="float-right mt-2">
-                                    <input type="checkbox" value="3" class="pack">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 card-col">
-                        <div class="card card-custom bg-white border-white">
-                            <div class="card-custom-img" style="background-image: url(images/pack-banner.jpg);"></div>
-                            <div class="card-custom-avatar">
-                                <img class="img-fluid" src="images/pack-logo.jpg" alt="Avatar" />
-                            </div>
-                            <div class="card-body" style="overflow-y: auto">
-                                <h4 class="card-title" id="4">Kids Pack</h4>
-                                <p class="card-text">Cards have minimum height set. You can use Bootstrap card-deck to align them nicely in a row.</p>
-                            </div>
-                            <div class="card-footer" style="background: inherit; border-color: inherit;">
-                                <a href="#" class="btn btn-primary">300/Month</a>
-                                <div class="float-right mt-2">
-                                    <form action="" method="POST"> <input type="checkbox" value="4" class="pack"></form>
+                                <p class="d-inline-block">300/Month</p>
+                                <div class="float-right">
+                                    <div class="pack-checkbox">
+                                        <label for="fourth-pack-radio-button" class="radio">
+                                            <input type="radio" name="rdo" value="500" id="fourth-pack-radio-button"
+                                                class="hidden pack-radio" />
+                                            <span class="label"></span>
+                                            <span class="select-label">select</span>
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -194,34 +235,36 @@
 
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-firestore.js"></script>
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-firestore.js"></script>
 
         <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#config-web-app -->
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-analytics.js"></script>
 
         <script>
             // Your web app's Firebase configuration
             var firebaseConfig = {
-                apiKey: "AIzaSyDZlxTCLC13cfBUJQcmP_tgl8OYHaypqAA",
-                authDomain: "rsk-finaltest.firebaseapp.com",
-                databaseURL: "https://rsk-finaltest.firebaseio.com",
-                projectId: "rsk-finaltest",
-                storageBucket: "",
-                messagingSenderId: "201949253428",
-                appId: "1:201949253428:web:78459569222f8f66"
+                apiKey: "AIzaSyCjOPK6CyVfDAPO_512d43T9S6sIXHVrmI",
+                authDomain: "cable-launch-test-project.firebaseapp.com",
+                databaseURL: "https://cable-launch-test-project.firebaseio.com",
+                projectId: "cable-launch-test-project",
+                storageBucket: "cable-launch-test-project.appspot.com",
+                messagingSenderId: "270278220532",
+                appId: "1:270278220532:web:6eeb345f53d678dac41ca1",
+                measurementId: "G-9GRSG52KLG"
             };
             // Initialize Firebase
             firebase.initializeApp(firebaseConfig);
-            const auth = firebase.auth();
-            const db = firebase.firestore();
+            var auth = firebase.auth();
+            var db = firebase.firestore();
+            firebase.analytics();
         </script>
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js " integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 " crossorigin="anonymous "></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js " integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM " crossorigin="anonymous "></script>
-
-        <script src="js/custom.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <script src="js/app.js"></script>
 
         <script>
@@ -233,11 +276,31 @@
                     console.log("no user")
                 }
             });
+            //--------------------------packages function--------------------------//
 
-            $('.navbar-toggler').on('click', function() {
-                $('.bar').toggleClass('open');
-            })
+            var TotalValue = 0;
+
+            var button = $(".popup-btn");
+
+            $(".pack-radio").click(function() {
+                if ($(this).is(":checked")) {
+                    button.css("display", "block");
+                    var result = $('input[type="radio"]:checked');
+                    var selectedValue = $(this).val();
+                    $(".popup-btn").text("Pay " + selectedValue);
+                    resultString = $("#" + selectedValue).text();
+                    TotalValue += parseInt(selectedValue);
+                    localStorage.setItem("packName", resultString);
+                    localStorage.setItem("packPrice", TotalValue);
+                } else {
+                    button.css("display", "none");
+                }
+                $(".popup-btn").click(function() {
+                    $(this).text('Please wait :)')
+                    window.location.href = 'payment_page.html';
+                });
+            });
         </script>
 </body>
 
-</html>a
+</html>
