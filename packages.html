@@ -17,7 +17,9 @@
 
     <style>
         body {
-            /* background-image: url("C:/Users/Sandeep Reddy/Desktop/cable design/public/images/about-bg.png"); */
+            background: url("images/packs-bg.png");
+            background-size: cover;
+            background-position: center center;
         }
         
         .back {
@@ -108,19 +110,42 @@
             margin-top: -15px;
         }
         
+        .back-arrow {
+            width: 50px;
+            position: absolute;
+            top: 10%;
+            left: 2%;
+        }
+        
         @keyframes wave {
             50% {
                 transform: scale(0.9);
             }
         }
         
-        @media only screen and (max-width:567px) {
-            .content-container {
-                padding-top: 25%;
-            }
+        @media only screen and (max-width:767px) {
             .inner-container {
                 max-width: 90%;
                 margin-left: auto;
+            }
+            .popup-btn {
+                width: 100%;
+                right: 0;
+                bottom: 0;
+            }
+            .card-custom {
+                max-width: 83%;
+                margin: 3% auto;
+            }
+            .back-arrow {
+                width: 50px;
+                position: absolute;
+                top: 6%;
+                left: 2%;
+            }
+            .packages-main-head {
+                font-size: 30px;
+                margin-top: 3%;
             }
         }
     </style>
@@ -134,12 +159,20 @@
 <body>
 
     <div class="container content-container">
+        <h1 class="text-center packages-main-head">Packages we offer</h1>
+        <div class="back-arrow-container">
+            <a href="index.html">
+                <img src="images/back-arrow.png" alt="back-arrow" class="img-fluid back-arrow">
+            </a>
+
+        </div>
         <div class="row">
+
             <div class="inner-container">
                 <div class="row" id="window">
                     <div class="col-md-3 card-col">
                         <div class="card card-custom bg-white border-white">
-                            <div class="card-custom-img" style="background-image: url(images/pack-banner.jpg);"></div>
+                            <div class="card-custom-img" style="background-image: url(images/pack-img.png);"></div>
                             <div class="card-body" style="overflow-y: auto">
                                 <h4 class="card-title" id="200">South Indian Family Pack</h4>
                             </div>
@@ -160,7 +193,7 @@
                     </div>
                     <div class="col-md-3 card-col">
                         <div class="card card-custom bg-white border-white">
-                            <div class="card-custom-img" style="background-image: url(images/pack-banner.jpg);"></div>
+                            <div class="card-custom-img" style="background-image: url(images/pack-img-one.png);"></div>
                             <div class="card-body" style="overflow-y: auto">
                                 <h4 class="card-title" id="300">North Indian pack</h4>
                                 <p class="card-text"></p>
@@ -183,7 +216,7 @@
                     </div>
                     <div class="col-md-3 card-col">
                         <div class="card card-custom bg-white border-white">
-                            <div class="card-custom-img" style="background-image: url(images/pack-banner.jpg);"></div>
+                            <div class="card-custom-img" style="background-image: url(images/pack-img-two.jpg);"></div>
                             <div class="card-body" style="overflow-y: auto">
                                 <h4 class="card-title" id="400">Tamil + Telugu Pack</h4>
                                 <p class="card-text"></p>
@@ -205,7 +238,8 @@
                     </div>
                     <div class="col-md-3 card-col">
                         <div class="card card-custom bg-white border-white">
-                            <div class="card-custom-img" style="background-image: url(images/pack-banner.jpg);"></div>
+                            <div class="card-custom-img" style="background-image: url(images/pack-img-two.jpg);">
+                            </div>
                             <div class="card-body" style="overflow-y: auto">
                                 <h4 class="card-title" id="500">Kids Pack</h4>
                                 <p class="card-text"></p>
@@ -230,7 +264,7 @@
         </div>
         <!-- payment button -->
 
-        <button class=" popup-btn">Pay Now</button>
+        <button class="popup-btn">Pay Now</button>
 
 
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -289,7 +323,7 @@
                     var selectedValue = $(this).val();
                     $(".popup-btn").text("Pay " + selectedValue);
                     resultString = $("#" + selectedValue).text();
-                    TotalValue += parseInt(selectedValue);
+                    TotalValue = parseInt(selectedValue);
                     localStorage.setItem("packName", resultString);
                     localStorage.setItem("packPrice", TotalValue);
                 } else {

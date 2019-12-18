@@ -23,6 +23,25 @@ $pack_price = $_POST['d-val'];
     <link rel="stylesheet" type="text/css" href="css/assets/css/styles.css">
     <link rel="stylesheet" type="text/css" href="css/assets/css/demo.css">
     <style>
+        .user-text {
+            font-size: 29px;
+            margin-top: 2%;
+        }
+        
+        body.preloader-active {
+            background: #545dff;
+        }
+        
+        .user-text-small {
+            font-size: 25px;
+        }
+        
+        .preloader-img {
+            margin: 0 auto;
+            max-width: 45%;
+            margin-left: 25%;
+        }
+        
         @media screen and (max-width: 580px) {
             .back {
                 position: absolute;
@@ -37,7 +56,6 @@ $pack_price = $_POST['d-val'];
             }
             .preloader {
                 width: 100%;
-                height: 5000px;
                 background: #545dff;
                 z-index: 9999;
             }
@@ -62,11 +80,11 @@ $pack_price = $_POST['d-val'];
 
     <div class="preloader" style="display: none;">
         <p class="user-text text-center text-white">Please wait</p>
-        <img src="images/printer.gif" alt="printing receipt" class="img-fluid">
+        <img src="images/printer.gif" alt="printing receipt" class="img-fluid preloader-img">
         <p class="text-center text-white user-text-small">we are printing your bill</p>
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid" id="payment-section-container">
         <header>
             <p id="uid" class="text-white mt"></p>
             <p id="pack" class="text-white"> </p>
@@ -238,8 +256,9 @@ $pack_price = $_POST['d-val'];
             razorpay.on('payment.success', function(resp) {
                 // alert(resp.razorpay_payment_id),
                 database(resp.razorpay_payment_id, pack, price, window.uid),
-                    $('.preloader').css('display', 'block');
-
+                    $('#payment-section-container').css('display', 'none');
+                $('.preloader').css('display', 'block');
+                $('body').addClass('preloader-active');
 
                 // database(resp.razorpay_payment_id,pack,price,window.uid)
                 //  alert(resp.razorpay_order_id),
@@ -251,7 +270,6 @@ $pack_price = $_POST['d-val'];
 
 
             })
-
 
             function database(pid, pack, price, uid) {
                 console.log(pid, pack, price, uid);
@@ -273,7 +291,6 @@ $pack_price = $_POST['d-val'];
                     console.log(e);
                     localStorage.removeItem("packName")
                     localStorage.removeItem("packPrice")
-
                     window.location.href = 'profile.html'
                 }).catch(e => {
                     console.log(e);
