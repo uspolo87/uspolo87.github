@@ -394,8 +394,20 @@
         <script src="js/custom.js "></script>
         <script src="js/app.js "></script>
         <script>
-            $('.navbar-toggler').on('click', function() {
-                $('.bar').toggleClass('open');
+            $(document).ready(function() {
+                // $('.navbar').css('background', '#6e4fcb');
+
+                $('.navbar-toggler').on('click', function() {
+                        $('.bar').toggleClass('open');
+                    })
+                    // $(window).scroll(function() {
+                    //     var scrollHeight = $(this).scrollTop();
+                    //     if (scrollHeight > 45) {
+                    //         $('.navbar').css('background', '#6e4fcb');
+                    //     } else {
+                    //         $('.navbar').css('background', '#6e4fcb');
+                    //     }
+                    // })
             })
         </script>
 </body>

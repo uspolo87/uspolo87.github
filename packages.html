@@ -170,95 +170,7 @@
 
             <div class="inner-container">
                 <div class="row" id="window">
-                    <div class="col-md-3 card-col">
-                        <div class="card card-custom bg-white border-white">
-                            <div class="card-custom-img" style="background-image: url(images/pack-img.png);"></div>
-                            <div class="card-body" style="overflow-y: auto">
-                                <h4 class="card-title" id="200">South Indian Family Pack</h4>
-                            </div>
-                            <div class="card-footer" style="background: inherit; border-color: inherit;">
-                                <p class="d-inline-block">200/Month</p>
-                                <div class="float-right">
-                                    <div class="pack-checkbox">
-                                        <label for="first-pack-radio-button" class="radio">
-                                            <input type="radio" value="200" name="rdo" id="first-pack-radio-button"
-                                                class="hidden pack-radio" />
-                                            <span class="label"></span>
-                                            <span class="select-label">select</span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 card-col">
-                        <div class="card card-custom bg-white border-white">
-                            <div class="card-custom-img" style="background-image: url(images/pack-img-one.png);"></div>
-                            <div class="card-body" style="overflow-y: auto">
-                                <h4 class="card-title" id="300">North Indian pack</h4>
-                                <p class="card-text"></p>
-                            </div>
-                            <div class="card-footer" style="background: inherit; border-color: inherit;">
-                                <p class="d-inline-block">300/Month</p class="d-inline-block">
-                                <div class="float-right">
-                                    <div class="pack-checkbox">
-                                        <label for="second-pack-radio-button" class="radio">
-                                            <input type="radio" name="rdo" value="300" id="second-pack-radio-button"
-                                                class="hidden pack-radio" />
-                                            <span class="label"></span>
-                                            <span class="select-label">select</span>
-                                        </label>
-                                    </div>
-                                </div>
 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 card-col">
-                        <div class="card card-custom bg-white border-white">
-                            <div class="card-custom-img" style="background-image: url(images/pack-img-two.jpg);"></div>
-                            <div class="card-body" style="overflow-y: auto">
-                                <h4 class="card-title" id="400">Tamil + Telugu Pack</h4>
-                                <p class="card-text"></p>
-                            </div>
-                            <div class="card-footer" style="background: inherit; border-color: inherit;">
-                                <p class="d-inline-block">400/Month</p>
-                                <div class="float-right">
-                                    <div class="pack-checkbox">
-                                        <label for="third-pack-radio-button" class="radio">
-                                            <input type="radio" name="rdo" value="400" id="third-pack-radio-button"
-                                                class="hidden pack-radio" />
-                                            <span class="label"></span>
-                                            <span class="select-label">select</span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 card-col">
-                        <div class="card card-custom bg-white border-white">
-                            <div class="card-custom-img" style="background-image: url(images/pack-img-two.jpg);">
-                            </div>
-                            <div class="card-body" style="overflow-y: auto">
-                                <h4 class="card-title" id="500">Kids Pack</h4>
-                                <p class="card-text"></p>
-                            </div>
-                            <div class="card-footer" style="background: inherit; border-color: inherit;">
-                                <p class="d-inline-block">300/Month</p>
-                                <div class="float-right">
-                                    <div class="pack-checkbox">
-                                        <label for="fourth-pack-radio-button" class="radio">
-                                            <input type="radio" name="rdo" value="500" id="fourth-pack-radio-button"
-                                                class="hidden pack-radio" />
-                                            <span class="label"></span>
-                                            <span class="select-label">select</span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -302,38 +214,81 @@
         <script src="js/app.js"></script>
 
         <script>
-            auth.onAuthStateChanged(user => {
-                if (user) {
-                    console.log('user');
+            $(document).ready(function() {
 
-                } else {
-                    console.log("no user")
-                }
-            });
-            //--------------------------packages function--------------------------//
+                auth.onAuthStateChanged(user => {
+                    if (user) {
+                        console.log('user');
+                        retrivePacks(user);
 
-            var TotalValue = 0;
-
-            var button = $(".popup-btn");
-
-            $(".pack-radio").click(function() {
-                if ($(this).is(":checked")) {
-                    button.css("display", "block");
-                    var result = $('input[type="radio"]:checked');
-                    var selectedValue = $(this).val();
-                    $(".popup-btn").text("Pay " + selectedValue);
-                    resultString = $("#" + selectedValue).text();
-                    TotalValue = parseInt(selectedValue);
-                    localStorage.setItem("packName", resultString);
-                    localStorage.setItem("packPrice", TotalValue);
-                } else {
-                    button.css("display", "none");
-                }
-                $(".popup-btn").click(function() {
-                    $(this).text('Please wait :)')
-                    window.location.href = 'payment_page.html';
+                    } else {
+                        console.log("no user")
+                    }
                 });
-            });
+
+                //-----------------retriving packages from database-----------------//
+
+                function retrivePacks(user) {
+                    if (user) {
+                        db.collection('cablePackages').get().then(packs => {
+                            packs.forEach(eachPack => {
+                                let packHtml = ` <div class="col-md-3 card-col" id=${eachPack.id}>
+                                    <div class="card card-custom bg-white border-white">
+                                        <div class="card-custom-img"
+                                            style="background-image: url(images/pack-img-one.png);"></div>
+                                        <div class="card-body" style="overflow-y: auto">
+                                            <h4 class="card-title">${eachPack.data().name}</h4>
+                                            <p class="card-text"></p>
+                                        </div>
+                                        <div class="card-footer" style="background: inherit; border-color: inherit;">
+                                            <p class="d-inline-block">${eachPack.data().price}/Month</p class="d-inline-block">
+                                            <div class="float-right">
+                                                <div class="pack-checkbox">
+                                                    <label for="second-pack-radio-button" class="radio">
+                                                        <input type="radio" name="rdo" value="300"
+                                                            id="second-pack-radio-button" class="hidden pack-radio" />
+                                                        <span class="label"></span>
+                                                        <span class="select-label">select</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>`
+                                $('#window').append(packHtml);
+                            })
+
+                        })
+                    }
+                }
+
+                //--------------------------packages function--------------------------//
+
+                var TotalValue = 0;
+
+                var button = $(".popup-btn");
+
+                $(".label").on('click', function() {
+                    console.log('clicked....!')
+                    if ($(this).is(":checked")) {
+                        button.css("display", "block");
+                        var result = $('input[type="radio"]:checked');
+                        var selectedValue = $(this).val();
+                        $(".popup-btn").text("Pay " + selectedValue);
+                        resultString = $("#" + selectedValue).text();
+                        TotalValue = parseInt(selectedValue);
+                        localStorage.setItem("packName", resultString);
+                        localStorage.setItem("packPrice", TotalValue);
+                    } else {
+                        button.css("display", "none");
+                    }
+                    $(".popup-btn").click(function() {
+                        $(this).text('Please wait :)')
+                        window.location.href = 'payment_page.html';
+                    });
+                });
+            })
         </script>
 </body>
 
