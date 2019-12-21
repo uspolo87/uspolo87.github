@@ -11,15 +11,18 @@
     <meta name="description" content="">
     <!--  meta theme-color -->
     <meta name="theme-color" content="#00273b" />
-    <!-- <link rel="manifest" href="/manifest.json"> -->
+    <link rel="manifest" href="manifest.json">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="css/style.css">
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 
     <style>
         body {
             background: url("images/packs-bg.png");
             background-size: cover;
             background-position: center center;
+            background-repeat: no-repeat;
         }
         
         .back {
@@ -150,9 +153,7 @@
         }
     </style>
 
-
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
 </head>
 
@@ -164,62 +165,34 @@
             <a href="index.html">
                 <img src="images/back-arrow.png" alt="back-arrow" class="img-fluid back-arrow">
             </a>
-
         </div>
         <div class="row">
-
             <div class="inner-container">
                 <div class="row" id="window">
 
                 </div>
             </div>
         </div>
-        <!-- payment button -->
-
-        <button class="popup-btn">Pay Now</button>
-
-
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-
-        <!-- The core Firebase JS SDK is always required and must be listed first -->
-        <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-firestore.js"></script>
-
-        <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-        <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-analytics.js"></script>
-
+        <button id="rzp-button" class="popup-btn"></button>
+        <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-firestore.js"></script>
+        <script src="js/firebase-init.js"></script>
+        <script src="js/jquery-3.3.1.slim.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/custom.js "></script>
+        <script src="js/app.js "></script>
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
         <script>
-            // Your web app's Firebase configuration
-            var firebaseConfig = {
-                apiKey: "AIzaSyCjOPK6CyVfDAPO_512d43T9S6sIXHVrmI",
-                authDomain: "cable-launch-test-project.firebaseapp.com",
-                databaseURL: "https://cable-launch-test-project.firebaseio.com",
-                projectId: "cable-launch-test-project",
-                storageBucket: "cable-launch-test-project.appspot.com",
-                messagingSenderId: "270278220532",
-                appId: "1:270278220532:web:6eeb345f53d678dac41ca1",
-                measurementId: "G-9GRSG52KLG"
-            };
-            // Initialize Firebase
-            firebase.initializeApp(firebaseConfig);
-            var auth = firebase.auth();
-            var db = firebase.firestore();
-            firebase.analytics();
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        <script src="js/app.js"></script>
-
-        <script>
+            var utc = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
             $(document).ready(function() {
-
+                var loggedInUserId;
                 auth.onAuthStateChanged(user => {
                     if (user) {
                         console.log('user');
                         retrivePacks(user);
+                        window.loggedInUserId = user.uid;
 
                     } else {
                         console.log("no user")
@@ -232,7 +205,7 @@
                     if (user) {
                         db.collection('cablePackages').get().then(packs => {
                             packs.forEach(eachPack => {
-                                let packHtml = ` <div class="col-md-3 card-col" id=${eachPack.id}>
+                                let packHtml = ` <div class="col-md-3 card-col">
                                     <div class="card card-custom bg-white border-white">
                                         <div class="card-custom-img"
                                             style="background-image: url(images/pack-img-one.png);"></div>
@@ -244,9 +217,9 @@
                                             <p class="d-inline-block">${eachPack.data().price}/Month</p class="d-inline-block">
                                             <div class="float-right">
                                                 <div class="pack-checkbox">
-                                                    <label for="second-pack-radio-button" class="radio">
+                                                    <label for="${eachPack.id}" class="radio">
                                                         <input type="radio" name="rdo" value="300"
-                                                            id="second-pack-radio-button" class="hidden pack-radio" />
+                                                            id="${eachPack.id}" class="hidden pack-radio" />
                                                         <span class="label"></span>
                                                         <span class="select-label">select</span>
                                                     </label>
@@ -266,30 +239,78 @@
                 //--------------------------packages function--------------------------//
 
                 var TotalValue = 0;
+                var priceValue = 0;
+                var packName = "";
 
                 var button = $(".popup-btn");
-
-                $(".label").on('click', function() {
-                    console.log('clicked....!')
-                    if ($(this).is(":checked")) {
+                $(document).on("click", ".pack-checkbox", function() {
+                    var radioValue = $("input[type='radio']:checked").attr('id');
+                    if (radioValue) {
                         button.css("display", "block");
                         var result = $('input[type="radio"]:checked');
-                        var selectedValue = $(this).val();
-                        $(".popup-btn").text("Pay " + selectedValue);
-                        resultString = $("#" + selectedValue).text();
-                        TotalValue = parseInt(selectedValue);
-                        localStorage.setItem("packName", resultString);
-                        localStorage.setItem("packPrice", TotalValue);
+
+                        db.collection('cablePackages').doc(radioValue).get().then(price => {
+                            $(".popup-btn").text('Pay ' + price.data().price);
+                            priceValue = price.data().price;
+                            packName = price.data().name;
+                        }).catch(err => {
+                            console.log(err.message);
+                        })
                     } else {
                         button.css("display", "none");
                     }
-                    $(".popup-btn").click(function() {
-                        $(this).text('Please wait :)')
-                        window.location.href = 'payment_page.html';
-                    });
                 });
+                //-------------payment--------------------//
+
+                $('#rzp-button').click(function(e) {
+                    var options = {
+                        "key": "rzp_test_8dUebZGl7jdfRm",
+                        "amount": priceValue * 100,
+                        "currency": "INR",
+                        "name": packName,
+                        "description": "all south indian channels",
+                        "image": "images/source.gif",
+                        "handler": function(response) {
+                            database(response.razorpay_payment_id, packName, priceValue, window.loggedInUserId);
+                        },
+                        "theme": {
+                            "color": "#F37254"
+                        }
+                    };
+                    var rzp1 = new Razorpay(options);
+                    rzp1.open();
+                    e.preventDefault();
+                });
+
+                function database(pid, pack, price, uid) {
+                    console.log(pid, pack, price, uid);
+                    db.collection('selectedUsers').add({
+                        PaymentId: pid,
+                        PackName: pack,
+                        Price: price,
+                        UserId: uid,
+                        Date: utc
+                    });
+
+                    db.collection('userDetails').doc(window.loggedInUserId).collection('selectedChannels').add({
+                        PaymentId: pid,
+                        PackName: pack,
+                        Price: price,
+                        UserId: uid,
+                        Date: utc
+                    }).then(e => {
+                        console.log(e);
+                        localStorage.removeItem("packName")
+                        localStorage.removeItem("packPrice")
+                        window.location.href = 'profile.html'
+                    }).catch(e => {
+                        console.log(e);
+                    })
+                }
+
             })
         </script>
+
 </body>
 
 </html>

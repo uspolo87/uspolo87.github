@@ -3,7 +3,7 @@ $(document).ready(function() {
     // $('.preloader').css('display', 'none');
 
     var currentUserId;
-    var finalImageUrl;
+    var finalUserImgUrl;
     var userProfileContainer = document.querySelector('.profile');
     var logoutContainer = document.querySelector('.user-logout-container');
     // //firebase storage ref
@@ -88,7 +88,8 @@ function userDetails(user) {
             console.log('upload is unsuccessful')
         }, function() {
             task.snapshot.ref.getDownloadURL().then(function(downloadURL) {
-                finalImageUrl = downloadURL;
+                finalUserImgUrl = downloadURL;
+                console.log(finalUserImgUrl);
             })
         })
     })
@@ -96,7 +97,7 @@ function userDetails(user) {
     //-------------------------user information update modal--------------------------------//
     $('#profile-update').on('click', function(e) {
         e.preventDefault();
-        var userImgUrl = finalImageUrl;
+        var userImgUrl = finalUserImgUrl;
         var name = $('#u-name').val();
         var address = $('#u-address').val();
         var email = $('#u-email').val();

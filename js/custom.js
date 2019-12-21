@@ -15,10 +15,11 @@ loginButton.addEventListener('click', formSubmitEvent => {
         }).catch(errorMessage => {
             $('.login-error-message').append('<span>' + errorMessage.code + '</span>');
             $('.login-error-message').css('display', 'inline');
+            $('.login-btn').text('Log In');
         })
 
     } else {
-        alert('please enter email');
+        alert('please enter email or password');
     }
 })
 

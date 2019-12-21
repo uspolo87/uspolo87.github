@@ -19,7 +19,6 @@ $pack_price = $_POST['d-val'];
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
     <link rel="stylesheet" type="text/css" href="css/assets/css/styles.css">
     <link rel="stylesheet" type="text/css" href="css/assets/css/demo.css">
     <style>
@@ -161,31 +160,12 @@ $pack_price = $_POST['d-val'];
     <div class="loader">
         <img src="" alt="">
     </div>
+
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-firestore.js"></script>
-
-
-
-    <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-            apiKey: "AIzaSyCjOPK6CyVfDAPO_512d43T9S6sIXHVrmI",
-            authDomain: "cable-launch-test-project.firebaseapp.com",
-            databaseURL: "https://cable-launch-test-project.firebaseio.com",
-            projectId: "cable-launch-test-project",
-            storageBucket: "cable-launch-test-project.appspot.com",
-            messagingSenderId: "270278220532",
-            appId: "1:270278220532:web:6eeb345f53d678dac41ca1",
-            measurementId: "G-9GRSG52KLG"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        var auth = firebase.auth();
-        var db = firebase.firestore();
-    </script>
-
+    <script src="js/firebase-init.js"></script>
     <!-- Optional JavaScript -->
     <script src="https://kit.fontawesome.com/a1f2dcfa97.js "></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -199,6 +179,7 @@ $pack_price = $_POST['d-val'];
     <script type="text/javascript" src="https://checkout.razorpay.com/v1/razorpay.js"></script>
     <script src="css/assets/js/jquery.payform.min.js" charset="utf-8"></script>
     <script src="css/assets/js/script.js"></script>
+
 
     <script>
         document.getElementById('pack').innerHTML = localStorage.getItem('packName')
