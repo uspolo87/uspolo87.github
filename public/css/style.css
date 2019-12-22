@@ -7,48 +7,6 @@
         margin: 0px;
         overflow-x: hidden;
     }
-    /* @media (max-width: 992px) {
-  .mobileMenu {
-    transform: translateX(-100%);
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    left: 0;
-    transition: all ease 0.25s;
-  }
-
-  .mobileMenu.onRight {
-    left: auto;
-    right: 0;
-    transform: translateX(100%);
-  }
-
-  .mobileMenu.open {
-    transform: translateX(0%);
-  }
-
-  .mobileMenu .navbar-nav {
-    overflow-y: auto;
-    margin-top: 24%;
-  }
-
-  .overlay {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: none;
-  }
-
-  .overlay.open {
-    display: block;
-    z-index: 1029;
-  }
-} */
     
     nav {
         background: none;
@@ -90,13 +48,13 @@
     .top-bar.open {
         transform: rotate(45deg);
         background: #7552cd;
-        transform-origin: 40% 39%;
+        transform-origin: 42% 39%;
     }
     
     .bottom-bar.open {
         transform: rotate(-45deg);
         background: #7552cd;
-        transform-origin: 15% 49%;
+        transform-origin: 11% 18%;
     }
     
     .navbar-toggler {
@@ -235,7 +193,7 @@
     }
     
     .btnAdd img {
-        width: 22px;
+        width: 18px;
         vertical-align: top;
         margin-right: 1px;
     }
@@ -688,8 +646,18 @@
         }
         .bar {
             height: 3px;
-            width: 33px;
+            width: 22px;
             margin-top: 6px;
+        }
+        .bottom-bar.open {
+            transform: rotate(-45deg);
+            background: #7552cd;
+            transform-origin: 10% 18%;
+        }
+        .top-bar.open {
+            transform: rotate(45deg);
+            background: #7552cd;
+            transform-origin: 35% 39%
         }
         .header-content h2 {
             font-size: 34px;
@@ -854,8 +822,8 @@
         }
         .bar {
             height: 2px;
-            width: 26px;
-            margin-top: 7px;
+            width: 22px;
+            margin-top: 6px;
         }
         .header-content h2 {
             font-size: 25px;

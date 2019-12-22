@@ -8,7 +8,7 @@
     <title>Profile</title>
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
     <style>
         body {
             background: slateblue;
@@ -199,16 +199,21 @@
             left: 40%;
         }
         
-        @media screen and (max-width:576px) {
+        @media screen and (max-width:767px) {
             .user-profile-container {
                 width: 90%;
-                height: 722px;
             }
             .preloader img {
                 position: absolute;
-                top: 5%;
-                left: 11%;
-                width: 313px;
+                top: 7%;
+                left: 30%;
+                width: 313px
+            }
+            .pack-info-tab {
+                height: 408px;
+            }
+            .profile-tab {
+                height: auto;
             }
             label {
                 margin-bottom: 0px;
@@ -224,6 +229,15 @@
                 left: 33px;
                 position: absolute;
                 top: 37px;
+            }
+            .profile {
+                height: auto;
+            }
+            .tab-padding-top {
+                padding-top: 52% !important;
+            }
+            .user-profile-container {
+                margin-top: 5%;
             }
         }
     </style>
@@ -251,7 +265,7 @@
                 </div>
                 <div class="row">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 tab-padding-top">
                     <div class="profile-head">
                         <h5 class="user-name">
 

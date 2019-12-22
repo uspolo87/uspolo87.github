@@ -25,6 +25,11 @@
             background-repeat: no-repeat;
         }
         
+        .row {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
+        
         .back {
             position: absolute;
             left: 6px;
@@ -299,12 +304,9 @@
                         UserId: uid,
                         Date: utc
                     }).then(e => {
-                        console.log(e);
-                        localStorage.removeItem("packName")
-                        localStorage.removeItem("packPrice")
-                        window.location.href = 'profile.html'
-                    }).catch(e => {
-                        console.log(e);
+                        window.location.href = 'profile.html#profile'
+                    }).catch(err => {
+                        console.log(err);
                     })
                 }
 

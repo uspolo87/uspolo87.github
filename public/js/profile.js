@@ -1,14 +1,13 @@
 $(document).ready(function() {
 
-    // $('.preloader').css('display', 'none');
+    setTimeout(function() {
+        $('#profile-tab').click();
+    }, 5000)
 
     var currentUserId;
     var finalUserImgUrl;
     var userProfileContainer = document.querySelector('.profile');
     var logoutContainer = document.querySelector('.user-logout-container');
-    // //firebase storage ref
-    // var storage = firebase.storage().ref();
-    // var imagesRef = storage.child('userProfileImages');
 
 
     auth.onAuthStateChanged(user => {
@@ -46,11 +45,6 @@ function userDetails(user) {
     // //--------------user pack details-------------------------------------------------------//
     db.collection('userDetails').doc(user.uid).collection('selectedChannels').get().then(doc => {
         doc.forEach(e => {
-
-            // $('#pack-name').text(e.data().PackName)
-            // $('#pack-price').text(e.data().Price)
-            // $('#pack-date').text(e.data().Date)
-            // $('#pack-id').text(e.data().PaymentId)
             let packHtml = ` <div class="card bg-c-blue order-card">
                 <div class="card-block">
                     <h6 class="m-b-20" id="pack-date">${e.data().Date}</h6>
@@ -66,8 +60,6 @@ function userDetails(user) {
     //uploading user image to firebase storage and retrieving url;
     var userUploadImg = document.querySelector('#u-img');
     userUploadImg.addEventListener('change', (event) => {
-
-
         let uploadImage = document.querySelector('input[type=file]').files[0];;
         var reader = new FileReader();
         reader.readAsDataURL(uploadImage);
@@ -109,7 +101,6 @@ function userDetails(user) {
             contact: contact,
             url: userImgUrl
         }).then(e => {
-            console.log('successfully updated');
             window.location.reload();
         })
     })
