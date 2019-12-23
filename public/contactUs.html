@@ -12,12 +12,18 @@
     <link rel="manifest" href="manifest.json" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="stylesheet" href="css/style.css" />
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/pretty-checkbox.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+    <link rel="stylesheet" href="css/font.css">
+    <link rel="stylesheet" href="css/font1.css">
+    <link rel="stylesheet" href="css/font3.css">
 
     <style>
+        body {
+            font-family: "Comfortaa", "Raleway" !important;
+        }
+        
         #form-container {
             padding-top: 10%;
         }
@@ -153,6 +159,35 @@
             left: 4%;
             top: 4.5%;
         }
+        
+        @media screen and (max-width:576px) {
+            .cbx span:last-child {
+                padding-left: 0px;
+            }
+            .back-arrow {
+                width: 33px;
+                height: auto;
+                position: absolute;
+                left: 4%;
+                top: 0;
+            }
+            .get-call-head {
+                margin-top: 19%;
+                font-size: 22px;
+                font-weight: 700;
+            }
+            #form-container {
+                padding-top: 0%;
+            }
+            .cbx span {
+                display: inline-block;
+                vertical-align: middle;
+                font-size: 13px;
+            }
+            .complaint-checkbox {
+                margin-top: 4%;
+            }
+        }
     </style>
 </head>
 
@@ -177,33 +212,40 @@
                     <div class="complaint-checkbox">
                         <input class="inp-cbx" id="payment-box" type="checkbox" style="display: none;" />
                         <label class="cbx" for="payment-box"><span>
-                            <svg width="12px" height="10px" viewbox="0 0 12 10">
-                              <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                            </svg></span>
-                            <span  class="box-info">Payment done, but channels not activated</span>
-                          </label>
+                                <svg width="12px" height="10px" viewbox="0 0 12 10">
+                                    <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                </svg></span>
+                            <span class="box-info">Payment done, but channels not activated</span>
+                        </label>
                     </div>
                     <div class="complaint-checkbox">
                         <input class="inp-cbx" id="pack-box" type="checkbox" style="display: none;" />
                         <label class="cbx" for="pack-box"><span>
-                            <svg width="12px" height="10px" viewbox="0 0 12 10">
-                              <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                            </svg></span>
-                            <span class="box-info">Other pack activated instead of what I opted  for</span>
-                          </label>
+                                <svg width="12px" height="10px" viewbox="0 0 12 10">
+                                    <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                </svg></span>
+                            <span class="box-info">Other pack activated instead of what I opted for</span>
+                        </label>
                     </div>
                     <div class="complaint-checkbox">
                         <input class="inp-cbx" id="img-box" type="checkbox" style="display: none;" />
                         <label class="cbx" for="img-box"><span>
-                            <svg width="12px" height="10px" viewbox="0 0 12 10">
-                              <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                            </svg></span>
+                                <svg width="12px" height="10px" viewbox="0 0 12 10">
+                                    <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                </svg></span>
                             <span class="box-info">Image is not clear</span>
-                          </label>
+                        </label>
                     </div>
                     <textarea name="complaints" id="complaint" cols="30" rows="2" class="form-control user-message-box" placeholder="Enter complaints here"></textarea>
                 </div>
                 <button class="btn btn-primary" id="cSubmit">submit</button>
+            </div>
+
+            <div id="response-container" class="text-center" style="display: none;">
+                <p class="text-center mt-3">
+                    your complaint is registered and Complaint id is our team will address it
+                </p>
+                <a href="index.html"> <i class="fa fa-angle-left"></i> Take me back to Home</a>
             </div>
 
             <div class="col-md-5">
@@ -219,7 +261,6 @@
     <script src="js/jquery-3.3.1.slim.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/popper.min.js"></script>
-    <script src="js/custom.js "></script>
     <script src="js/app.js "></script>
     <script src="sw.js "></script>
     <script>
@@ -237,7 +278,10 @@
                             complaintId: count++
                         })
                         .then(e => {
-                            alert("your complaint is registered and Complaint id is " + count++ + "our team will address it");
+                            $('#form-container').css('display', 'none')
+                            $('#response-container').css('display', 'block')
+                                // alert("your complaint is registered and Complaint id is " + count++ +
+                                //     "our team will address it");
                         })
                         .catch(e => {
                             console.log(
@@ -254,9 +298,12 @@
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js " integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 " crossorigin="anonymous "></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js " integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM " crossorigin="anonymous "></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous ">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js " integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 " crossorigin="anonymous ">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js " integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM " crossorigin="anonymous ">
+    </script>
 
     <script src="js/app.js"></script>
 </body>

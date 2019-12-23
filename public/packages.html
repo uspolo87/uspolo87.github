@@ -13,7 +13,11 @@
     <meta name="theme-color" content="#00273b" />
     <link rel="manifest" href="manifest.json">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/font.css">
+    <link rel="stylesheet" href="css/font1.css">
+    <link rel="stylesheet" href="css/font3.css">
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 
@@ -23,6 +27,7 @@
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
+            font-family: "Comfortaa", "Raleway" !important;
         }
         
         .row {
@@ -131,6 +136,43 @@
             }
         }
         
+        .packages-loader {
+            height: 5000px;
+            background: #ffffff;
+        }
+        
+        .packages-loader img {
+            position: absolute;
+            left: 39%;
+            top: 20%;
+        }
+        
+        .payment-loader {
+            background: #545dff;
+            height: 2000px;
+        }
+        
+        .printer-loader {
+            max-width: 44%;
+            margin-left: 28%;
+        }
+        
+        .user-text {
+            font-size: 30px;
+            padding-top: 3%;
+        }
+        
+        .user-text-small {
+            font-size: 22px;
+        }
+        
+        .user-redirect-url {
+            border: 1px solid #fff;
+            color: #fff;
+            font-size: 20px;
+            text-decoration: none;
+        }
+        
         @media only screen and (max-width:767px) {
             .inner-container {
                 max-width: 90%;
@@ -156,14 +198,57 @@
                 margin-top: 3%;
             }
         }
+        
+        @media only screen and (max-width:576px) {
+            .inner-container {
+                max-width: 90%;
+                margin: auto;
+            }
+            .back-arrow {
+                width: 33px;
+                position: absolute;
+                top: 14%;
+                left: 2%;
+            }
+            #window {
+                padding-top: 7%;
+            }
+            .packages-loader img {
+                max-width: 157px;
+                position: absolute;
+                top: 34%;
+                left: 30%;
+            }
+            .user-text {
+                padding-top: 22%
+            }
+            .printer-loader {
+                max-width: 74%;
+                margin-left: 11%;
+            }
+            .user-text-small {
+                font-size: 23px;
+                margin-top: 17%;
+            }
+        }
     </style>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
 
 </head>
 
 <body>
-
+    <div class="packages-loader">
+        <img src="images/loader.gif" alt="loading gif">
+    </div>
+    <div class="payment-loader" style="display: none;">
+        <p class="user-text text-center text-white">Please wait</p>
+        <img src="images/printer.gif" alt="printing receipt" class="img-fluid printer-loader">
+        <p class="text-center text-white user-text-small">we are printing your bill</p>
+        <p class="text-center text-white user-text-small">If not redirected click here
+            <a href="profile.html" class="user-redirect-url">Profile</a>
+        </p>
+    </div>
     <div class="container content-container">
         <h1 class="text-center packages-main-head">Packages we offer</h1>
         <div class="back-arrow-container">
@@ -186,7 +271,6 @@
         <script src="js/jquery-3.3.1.slim.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/popper.min.js"></script>
-        <script src="js/custom.js "></script>
         <script src="js/app.js "></script>
         <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
         <script>
@@ -234,6 +318,7 @@
                                         </div>
                                     </div>
                                 </div>`
+                                $('.packages-loader').css('display', 'none');
                                 $('#window').append(packHtml);
                             })
 
@@ -251,11 +336,11 @@
                 $(document).on("click", ".pack-checkbox", function() {
                     var radioValue = $("input[type='radio']:checked").attr('id');
                     if (radioValue) {
-                        button.css("display", "block");
                         var result = $('input[type="radio"]:checked');
-
+                        button.css("display", "block");
                         db.collection('cablePackages').doc(radioValue).get().then(price => {
                             $(".popup-btn").text('Pay ' + price.data().price);
+
                             priceValue = price.data().price;
                             packName = price.data().name;
                         }).catch(err => {
@@ -276,7 +361,8 @@
                         "description": "all south indian channels",
                         "image": "images/source.gif",
                         "handler": function(response) {
-                            database(response.razorpay_payment_id, packName, priceValue, window.loggedInUserId);
+                            database(response.razorpay_payment_id, packName, priceValue, window
+                                .loggedInUserId);
                         },
                         "theme": {
                             "color": "#F37254"
@@ -288,6 +374,9 @@
                 });
 
                 function database(pid, pack, price, uid) {
+                    $('.payment-loader').css('display', 'block');
+                    $('.back-arrow').css('display', 'none');
+                    $('.popup-btn').css('display', 'none');
                     console.log(pid, pack, price, uid);
                     db.collection('selectedUsers').add({
                         PaymentId: pid,

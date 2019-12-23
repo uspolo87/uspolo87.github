@@ -1,17 +1,33 @@
-if ('serviceWorker' in navigator && 'PushManager' in window) {
-    navigator.serviceWorker.register('/sw.js').then(e => {
-        console.log('service worker is registered and push is supported ', e)
-        swRegistration = e;
-        askPermission();
-    }).catch(e => {
-        console.log(e);
+//checkinh the browser requirement for install of service wroker
+
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('sw.js').then(swEvent => {
+            console.log('successfully registered');
+        }, function(err) {
+            console.log('err', err);
+        })
     })
-} else {
-    // console.log('Push messaging is not supported');
-    pushButton.textContent = 'push Now Supported';
 }
 
-//---------------------------------------------install banner code-----------------------------------------------------
+
+
+
+
+// if ('serviceWorker' in navigator && 'PushManager' in window) {
+//     navigator.serviceWorker.register('sw.js').then(e => {
+//         console.log('service worker is registered and push is supported ', e)
+//         swRegistration = e;
+//         askPermission();
+//     }).catch(e => {
+//         console.log(e);
+//     })
+// } else {
+//     // console.log('Push messaging is not supported');
+//     pushButton.textContent = 'push Now Supported';
+// }
+
+// //---------------------------------------------install banner code-----------------------------------------------------
 
 var deferredPrompt;
 
@@ -50,23 +66,23 @@ window.addEventListener('appinstalled', (evt) => {
 
 
 
-var request = Notification.requestPermission();
+// var request = Notification.requestPermission();
 
-function askPermission() {
-    if (Notification.permission = "granted") {
+// function askPermission() {
+//     if (Notification.permission = "granted") {
 
-        var newNotification = new Notification('Rinku Cable', {
-            body: 'welcome to Rinku Cable',
-            icon: 'https://icons-for-free.com/iconfiles/png/512/cable+mintie+screen+set+television+tv+icon-1320190746401799363.png',
-            tag: 'Explore Packages Now'
-        });
-
-
-    }
+//         var newNotification = new Notification('Rinku Cable', {
+//             body: 'welcome to Rinku Cable',
+//             icon: 'https://icons-for-free.com/iconfiles/png/512/cable+mintie+screen+set+television+tv+icon-1320190746401799363.png',
+//             tag: 'Explore Packages Now'
+//         });
 
 
-}
+//     }
+
+
+// }
 
 
 
-//***********************************Notifications by Service worker*****************************************/
+// //***********************************Notifications by Service worker*****************************************/

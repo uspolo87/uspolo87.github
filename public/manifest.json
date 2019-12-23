@@ -1,18 +1,18 @@
 {
     "short_name": "Rinku Cable",
     "name": "Rinku Cable TV",
-    "start_url": "/index.html",
+    "start_url": "index.html",
     "display": "standalone",
     "background_color": "#7552cd",
     "theme_color": "#7552cd",
 
     "icons": [{
-            "src": "/images/icon192.png",
+            "src": "images/icon-192.png",
             "type": "image/png",
             "sizes": "192x192"
         },
         {
-            "src": "/images/icon512.png",
+            "src": "images/icon-512.png",
             "type": "image/png",
             "sizes": "512x512"
         }

@@ -13,10 +13,13 @@
     <link rel="manifest" href="manifest.json">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/favicon.png">
     <link rel="stylesheet" href="css/style.css">
-    <!--<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="css/font.css">
+    <link rel="stylesheet" href="css/font1.css">
+    <link rel="stylesheet" href="css/font3.css">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -322,21 +325,41 @@
                 if (screen.width < 768) {
                     $('.banner-install-icon').attr('src', 'images/tab-install-icon.svg')
                 }
+                //------------------navbar close on click on anywhere----------------//
+                $(document).click(function(event) {
+                    var clickover = $(event.target);
+                    var _opened = $(".navbar-collapse").hasClass("collapse show");
+                    console.log(clickover);
+                    if (_opened === true && !clickover.hasClass("navbar-toggle")) {
+
+                        if (!clickover.hasClass('nav-collpase-block')) {
+                            $(".navbar-toggler").click();
+                        }
+                    }
+                });
+
+                //--------------converting the bar to cross icon on user click--------------------//
 
                 $('.navbar-toggler').on('click', function() {
                     $('.bar').toggleClass('open');
                 })
+
+                //------------------------changing nav background based on scroll position--------------------//
                 $(window).scroll(function() {
                     var scrollHeight = $(this).scrollTop();
-                    if (screen.width < 768) {
-                        if (scrollHeight > 145) {
+                    if (screen.width > 767) {
+                        if (scrollHeight > 45) {
                             $('.navbar').css('background', '#6e4fcb');
+                            $('.navbar-brand').css('color', '#ffffff');
                         } else {
                             $('.navbar').css('background', 'transparent');
+                            $('.navbar-brand').css('color', '#6e4fcb');
                         }
                     } else {
-                        if (scrollHeight > 245) {
+
+                        if (scrollHeight > 45) {
                             $('.navbar').css('background', '#6e4fcb');
+
                         } else {
                             $('.navbar').css('background', 'transparent');
                         }
@@ -348,4 +371,4 @@
         </script>
 </body>
 
-</html>x`
+</html>
