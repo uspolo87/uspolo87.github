@@ -153,8 +153,8 @@
         }
         
         .printer-loader {
-            max-width: 44%;
-            margin-left: 28%;
+            max-width: 38%;
+            margin-left: 31%;
         }
         
         .user-text {
@@ -169,6 +169,8 @@
         .user-redirect-url {
             border: 1px solid #fff;
             color: #fff;
+            padding: 4px 35px 2px;
+            border-radius: 8px;
             font-size: 20px;
             text-decoration: none;
         }
@@ -204,6 +206,10 @@
                 max-width: 90%;
                 margin: auto;
             }
+            .user-text-small {
+                font-size: 23px;
+                margin-top: 28%;
+            }
             .back-arrow {
                 width: 33px;
                 position: absolute;
@@ -228,7 +234,10 @@
             }
             .user-text-small {
                 font-size: 23px;
-                margin-top: 17%;
+                margin-top: 15%;
+            }
+            .payment-loader {
+                height: 100%;
             }
         }
     </style>
@@ -263,38 +272,39 @@
                 </div>
             </div>
         </div>
-        <button id="rzp-button" class="popup-btn"></button>
-        <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-firestore.js"></script>
-        <script src="js/firebase-init.js"></script>
-        <script src="js/jquery-3.3.1.slim.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/app.js "></script>
-        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-        <script>
-            var utc = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
-            $(document).ready(function() {
-                var loggedInUserId;
-                auth.onAuthStateChanged(user => {
-                    if (user) {
-                        console.log('user');
-                        retrivePacks(user);
-                        window.loggedInUserId = user.uid;
+    </div>
+    <button id="rzp-button" class="popup-btn"></button>
+    <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.1/firebase-firestore.js"></script>
+    <script src="js/firebase-init.js"></script>
+    <script src="js/jquery-3.3.1.slim.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/app.js "></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        var utc = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
+        $(document).ready(function() {
+            var loggedInUserId;
+            auth.onAuthStateChanged(user => {
+                if (user) {
+                    console.log('user');
+                    retrivePacks(user);
+                    window.loggedInUserId = user.uid;
 
-                    } else {
-                        console.log("no user")
-                    }
-                });
+                } else {
+                    console.log("no user")
+                }
+            });
 
-                //-----------------retriving packages from database-----------------//
+            //-----------------retriving packages from database-----------------//
 
-                function retrivePacks(user) {
-                    if (user) {
-                        db.collection('cablePackages').get().then(packs => {
-                            packs.forEach(eachPack => {
-                                let packHtml = ` <div class="col-md-3 card-col">
+            function retrivePacks(user) {
+                if (user) {
+                    db.collection('cablePackages').get().then(packs => {
+                        packs.forEach(eachPack => {
+                            let packHtml = ` <div class="col-md-3 card-col">
                                     <div class="card card-custom bg-white border-white">
                                         <div class="card-custom-img"
                                             style="background-image: url(images/pack-img-one.png);"></div>
@@ -318,90 +328,95 @@
                                         </div>
                                     </div>
                                 </div>`
-                                $('.packages-loader').css('display', 'none');
-                                $('#window').append(packHtml);
-                            })
-
+                            $('.packages-loader').css('display', 'none');
+                            $('#window').append(packHtml);
                         })
-                    }
-                }
 
-                //--------------------------packages function--------------------------//
-
-                var TotalValue = 0;
-                var priceValue = 0;
-                var packName = "";
-
-                var button = $(".popup-btn");
-                $(document).on("click", ".pack-checkbox", function() {
-                    var radioValue = $("input[type='radio']:checked").attr('id');
-                    if (radioValue) {
-                        var result = $('input[type="radio"]:checked');
-                        button.css("display", "block");
-                        db.collection('cablePackages').doc(radioValue).get().then(price => {
-                            $(".popup-btn").text('Pay ' + price.data().price);
-
-                            priceValue = price.data().price;
-                            packName = price.data().name;
-                        }).catch(err => {
-                            console.log(err.message);
-                        })
-                    } else {
-                        button.css("display", "none");
-                    }
-                });
-                //-------------payment--------------------//
-
-                $('#rzp-button').click(function(e) {
-                    var options = {
-                        "key": "rzp_test_8dUebZGl7jdfRm",
-                        "amount": priceValue * 100,
-                        "currency": "INR",
-                        "name": packName,
-                        "description": "all south indian channels",
-                        "image": "images/source.gif",
-                        "handler": function(response) {
-                            database(response.razorpay_payment_id, packName, priceValue, window
-                                .loggedInUserId);
-                        },
-                        "theme": {
-                            "color": "#F37254"
-                        }
-                    };
-                    var rzp1 = new Razorpay(options);
-                    rzp1.open();
-                    e.preventDefault();
-                });
-
-                function database(pid, pack, price, uid) {
-                    $('.payment-loader').css('display', 'block');
-                    $('.back-arrow').css('display', 'none');
-                    $('.popup-btn').css('display', 'none');
-                    console.log(pid, pack, price, uid);
-                    db.collection('selectedUsers').add({
-                        PaymentId: pid,
-                        PackName: pack,
-                        Price: price,
-                        UserId: uid,
-                        Date: utc
-                    });
-
-                    db.collection('userDetails').doc(window.loggedInUserId).collection('selectedChannels').add({
-                        PaymentId: pid,
-                        PackName: pack,
-                        Price: price,
-                        UserId: uid,
-                        Date: utc
-                    }).then(e => {
-                        window.location.href = 'profile.html#profile'
-                    }).catch(err => {
-                        console.log(err);
                     })
                 }
+            }
 
-            })
-        </script>
+            //--------------------------packages function--------------------------//
+
+            var TotalValue = 0;
+            var priceValue = 0;
+            var packName = "";
+
+            var button = $(".popup-btn");
+            $(document).on("click", ".pack-checkbox", function() {
+                var radioValue = $("input[type='radio']:checked").attr('id');
+                if (radioValue) {
+                    var result = $('input[type="radio"]:checked');
+                    button.css("display", "block");
+                    db.collection('cablePackages').doc(radioValue).get().then(price => {
+                        $(".popup-btn").text('Pay ' + price.data().price);
+
+                        priceValue = price.data().price;
+                        packName = price.data().name;
+                    }).catch(err => {
+                        console.log(err.message);
+                    })
+                } else {
+                    button.css("display", "none");
+                }
+            });
+            //-------------payment--------------------//
+
+            $('#rzp-button').click(function(e) {
+                var options = {
+                    "key": "rzp_test_8dUebZGl7jdfRm",
+                    "amount": priceValue * 100,
+                    "currency": "INR",
+                    "name": packName,
+                    "description": "all south indian channels",
+                    "image": "images/source.gif",
+                    "handler": function(response) {
+                        database(response.razorpay_payment_id, packName, priceValue, window
+                            .loggedInUserId);
+                    },
+                    "theme": {
+                        "color": "#545dff"
+                    }
+                };
+                var rzp1 = new Razorpay(options);
+                rzp1.open();
+                e.preventDefault();
+            });
+
+            function database(pid, pack, price, uid) {
+                $('.payment-loader').css('display', 'block');
+                $('.content-container').css('display', 'none');
+                $('body').css({
+                    'overflow': 'hidden',
+                    'background': '#545dff'
+                });
+
+                $('.back-arrow-container').css('display', 'none');
+                $('.popup-btn').css('display', 'none');
+                db.collection('selectedUsers').add({
+                    PaymentId: pid,
+                    PackName: pack,
+                    Price: price,
+                    UserId: uid,
+                    Date: utc
+                });
+
+                db.collection('userDetails').doc(window.loggedInUserId).collection('selectedChannels').add({
+                    PaymentId: pid,
+                    PackName: pack,
+                    Price: price,
+                    UserId: uid,
+                    Date: utc
+                }).then(e => {
+                    window.location.href = 'profile.html#profile'
+                }).catch(err => {
+                    console.log(err);
+                })
+            }
+
+        })
+    </script>
 
 </body>
 
-</html>
+</html>x`

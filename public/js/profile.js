@@ -47,9 +47,9 @@ function userDetails(user) {
         doc.forEach(e => {
             let packHtml = ` <div class="card bg-c-blue order-card">
                 <div class="card-block">
-                    <h6 class="m-b-20" id="pack-date">${e.data().Date}</h6>
-                    <h2 class="text-left" id="pack-name">${e.data().PackName}<i class="fa fa-credit-card text-right"></i> </h2>
-                    <p class="m-b-0 text-white" id="pack-date">${e.data().PaymentId}<span class="f-right text-white" id="pack-price">${e.data().Price}/month</span></p>
+                    <h6 class="m-b-20 pack-date" id="pack-date">${e.data().Date}</h6>
+                    <h2 class="text-left pack-name" id="pack-name">${e.data().PackName}<i class="fa fa-credit-card text-right"></i> </h2>
+                    <p class="m-b-0 text-white payment-id">${e.data().PaymentId}<span class="f-right text-white" id="pack-price">${e.data().Price}/month</span></p>
                 </div>
             </div>`;
             $('.pack-info-append-container').append(packHtml);
@@ -67,7 +67,7 @@ function userDetails(user) {
         let task = storageRef.put(uploadImage);
         task.on('state_changed', (snapshot) => {
             let uploadPercentage = snapshot.bytesTransferred / snapshot.totalBytes * 100;
-            console.log('upload is' + uploadPercentage + "done");
+            $('.profile-uploading-status').text('uploading is' + uploadPercentage + 'done');
             switch (snapshot.state) {
                 case firebase.storage.TaskState.PAUSED: // or 'paused'
                     console.log('Upload is paused');
@@ -77,7 +77,7 @@ function userDetails(user) {
                     break;
             }
         }, function(error) {
-            console.log('upload is unsuccessful')
+            $('#profile-update').addClass('active');
         }, function() {
             task.snapshot.ref.getDownloadURL().then(function(downloadURL) {
                 finalUserImgUrl = downloadURL;

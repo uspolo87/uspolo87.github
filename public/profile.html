@@ -209,6 +209,19 @@
             left: 40%;
         }
         
+        #profile-update {
+            pointer-events: none;
+            background: #eaecec;
+            color: black;
+            border: none;
+        }
+        
+        .active#profile-update {
+            color: white;
+            background: #0062cc;
+            border: none;
+        }
+        
         @media screen and (max-width:767px) {
             .preloader img {
                 position: absolute;
@@ -266,13 +279,13 @@
                 top: 0px;
             }
             .profile-img img {
-                width: 36%;
-                left: 31%;
-                top: 59%;
+                max-width: 130px;
+                left: 34%;
+                z-index: 9;
                 border-radius: 28%;
             }
             .tab-padding-top {
-                padding-top: 32% !important;
+                padding-top: 39% !important;
             }
             .user-data-p {
                 font-size: 16px;
@@ -283,7 +296,27 @@
             .user-profile-container {
                 margin: 0;
                 width: 100%;
-                padding: 7%;
+                padding: 7% 7% 0 7%;
+            }
+            .card .card-block {
+                padding: 25px 25px 0 17px;
+            }
+            .pack-date {
+                font-size: 14px;
+            }
+            .pack-name {
+                font-size: 19px;
+                margin-bottom: 15px;
+            }
+            .order-card i {
+                font-size: 26px;
+                margin-left: 11px;
+            }
+            .payment-id {
+                font-size: 15px;
+            }
+            .profile-head .nav-tabs {
+                margin-left: 11%;
             }
         }
     </style>
@@ -398,7 +431,7 @@
             </div>
             <div class="col-md-10  text-center user-logout-container" style="display: none;">
                 <h2>Log in to view your Profile</h2>
-                <button class="btn btn-info">Log in</button>
+                <a href="index.html"> <i class="fa fa-chevron-left"></i> Take me to Log in page</a>
 
             </div>
         </div>
@@ -417,9 +450,13 @@
                     <!-- Modal body -->
                     <div class="modal-body">
                         <form action="#" method="POST">
-                            <label for="u-img" class="u-img" style="background: blue; color:white; padding:5px 15px;">Upload Profile Pic
-                                <input type="file" id="u-img" accept="image/*" style="display: none;">
-                            </label>
+                            <div class="form-group">
+                                <label for="u-img" class="u-img" style="background: blue; color:white; padding:5px 15px;">Upload Profile Pic
+                                    <input type="file" id="u-img" accept="image/*" style="display: none;">
+                                </label>
+                                <span class="profile-uploading-status"></span>
+                            </div>
+
                             <div class="form-group">
                                 <label for="u-name"></label>
                                 <input type="text" name="u-name" class="form-control" id="u-name" placeholder="Enter Name">

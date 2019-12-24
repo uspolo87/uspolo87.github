@@ -80,7 +80,7 @@
             height: 18px;
             border-radius: 3px;
             transform: scale(1);
-            vertical-align: middle;
+            vertical-align: top;
             border: 1px solid #9098A9;
             transition: all 0.2s ease;
         }
@@ -161,8 +161,10 @@
         }
         
         @media screen and (max-width:576px) {
-            .cbx span:last-child {
+            .cbx span:first-child {
                 padding-left: 0px;
+                max-width: 89%;
+                vertical-align: top;
             }
             .back-arrow {
                 width: 33px;
@@ -177,7 +179,7 @@
                 font-weight: 700;
             }
             #form-container {
-                padding-top: 0%;
+                padding-top: 6%;
             }
             .cbx span {
                 display: inline-block;
@@ -186,6 +188,19 @@
             }
             .complaint-checkbox {
                 margin-top: 4%;
+            }
+            .box-info:last-child {
+                vertical-align: top;
+                max-width: 90%;
+            }
+            .contactus-img {
+                max-width: 80%;
+                margin: 4% 8%;
+            }
+            #response-container {
+                margin-top: 11%;
+                max-width: 90%;
+                margin: 11% auto;
             }
         }
     </style>
@@ -243,13 +258,13 @@
 
             <div id="response-container" class="text-center" style="display: none;">
                 <p class="text-center mt-3">
-                    your complaint is registered and Complaint id is our team will address it
+                    your complaint is registered and Complaint id is <span id="complaint-id"></span> , our team will address it
                 </p>
                 <a href="index.html"> <i class="fa fa-angle-left"></i> Take me back to Home</a>
             </div>
 
             <div class="col-md-5">
-                <img src="images/new-conn.svg" alt="new Connection" class="img-responsive" />
+                <img src="images/new-conn.svg" alt="new Connection" class="img-responsive contactus-img" />
             </div>
         </div>
     </div>
@@ -280,8 +295,7 @@
                         .then(e => {
                             $('#form-container').css('display', 'none')
                             $('#response-container').css('display', 'block')
-                                // alert("your complaint is registered and Complaint id is " + count++ +
-                                //     "our team will address it");
+                            $('#complaint-id').text(count++);
                         })
                         .catch(e => {
                             console.log(
