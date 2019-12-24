@@ -1,6 +1,6 @@
 //checkinh the browser requirement for install of service wroker
 
-var CACHE_NAME = 'my-site-cache-v2';
+var CACHE_NAME = 'my-site-cache-v1';
 var urlsToCache = [
     '/',
     'index.html',

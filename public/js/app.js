@@ -44,7 +44,6 @@ function showButton() {
     btnAdd.style.display = 'block';
 }
 btnAdd.addEventListener('click', (e) => {
-
     btnAdd.style.display = 'none';
     deferredPrompt.prompt();
     deferredPrompt.userChoice
@@ -60,10 +59,12 @@ btnAdd.addEventListener('click', (e) => {
 });
 
 window.addEventListener('appinstalled', (evt) => {
-    console.log('a2hs installed');
+    btnAdd.style.display = 'none';
 });
 
-
+if (window.matchMedia('(display-mode: standalone)').matches) {
+    btnAdd.style.display = 'none';
+}
 
 
 // var request = Notification.requestPermission();
